@@ -1,1 +1,0 @@
-My Website Project based on (Hugo)[https://gohugo.io/] and (Blowfish)[https://blowfish.page/]
