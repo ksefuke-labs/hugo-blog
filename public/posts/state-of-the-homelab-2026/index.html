@@ -1,0 +1,1652 @@
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="light"
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="en">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  
+    <title>State of the Homelab 2026 &middot; Ksefuke-labs</title>
+    <meta name="title" content="State of the Homelab 2026 &middot; Ksefuke-labs">
+  
+
+  
+  
+    <meta name="description" content="An overview of my compact yet powerful Proxmox-based homelab, the hardware behind it, and the services it currently hosts">
+  
+  
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/state-of-the-homelab-2026/">
+  
+
+  
+  
+    <meta name="author" content="Kasonde A. Sefuke">
+  
+  
+    
+      
+        
+          <link href="https://github.com/ksefuke-labs" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://www.linkedin.com/in/kasonde-anthony-sefuke-066b69387" rel="me">
+        
+      
+    
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/state-of-the-homelab-2026/">
+  <meta property="og:site_name" content="Ksefuke-labs">
+  <meta property="og:title" content="State of the Homelab 2026">
+  <meta property="og:description" content="An overview of my compact yet powerful Proxmox-based homelab, the hardware behind it, and the services it currently hosts">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-01T20:27:30+00:00">
+    <meta property="article:modified_time" content="2026-01-01T20:27:30+00:00">
+    <meta property="og:image" content="http://localhost:1313/posts/state-of-the-homelab-2026/featured.jpg">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/posts/state-of-the-homelab-2026/featured.jpg">
+  <meta name="twitter:title" content="State of the Homelab 2026">
+  <meta name="twitter:description" content="An overview of my compact yet powerful Proxmox-based homelab, the hardware behind it, and the services it currently hosts">
+
+  
+  
+  
+  
+    
+      
+    
+  
+    
+  
+    
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.252513b66a116a63ca17dd35a4649cd75987d470f41361429e939c62bd47d672aba152ddeb0af895ea175fde24a18d2c472729f7bcfee84d4f867d41be763747.css"
+    integrity="sha512-JSUTtmoRamPKF901pGSc11mH1HD0E2FCnpOcYr1H1nKroVLd6wr4leoXX94koY0sRycp97z&#43;6E1Phn1BvnY3Rw==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.6f41174b3a05b680820fe08cadbfa5fb7a7ca347b76a0955cdc68b9d8aca1ce24f0547e138cea33bcc7904d551a90afcb1cc7f2d9fe8557075d501419046c08c.js"
+    integrity="sha512-b0EXSzoFtoCCD&#43;CMrb&#43;l&#43;3p8o0e3aglVzcaLnYrKHOJPBUfhOM6jO8x5BNVRqQr8scx/LZ/oVXB11QFBkEbAjA=="></script>
+  
+  
+  
+  
+  
+    
+    <script
+      type="text/javascript"
+      src="/js/zen-mode.min.9814dee9614d32aeb56239d118edfe20acd6231424f9b19c2dd48835038414130a5e946c0d1c9087d60e60e31840c9babfd217e3d4b95643dc8d651a71ccdf4a.js"
+      integrity="sha512-mBTe6WFNMq61YjnRGO3&#43;IKzWIxQk&#43;bGcLdSINQOEFBMKXpRsDRyQh9YOYOMYQMm6v9IX49S5VkPcjWUacczfSg=="></script>
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.a527109b68c082a70f3697716dd72a9d5aa8b545cf800cecbbc7399f2ca6f6e0ce3e431f2062b48bbfa47c9ea42822714060bef309be073f49b9c0e30d318d7b.js" integrity="sha512-pScQm2jAgqcPNpdxbdcqnVqotUXPgAzsu8c5nyym9uDOPkMfIGK0i7&#43;kfJ6kKCJxQGC&#43;8wm&#43;Bz9JucDjDTGNew=="></script>
+  
+
+  
+  
+  
+    
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.174bcf70e6e1263b171d57722e12e947c094a38b89ba10267b8744db900c25af6426a478c44554553ac180127863a0014c61409cb86b8052ec370dd7cc92d593.js"
+      integrity="sha512-F0vPcObhJjsXHVdyLhLpR8CUo4uJuhAme4dE25AMJa9kJqR4xEVUVTrBgBJ4Y6ABTGFAnLhrgFLsNw3XzJLVkw=="
+      data-copy="Copy"
+      data-copied="Copied"></script>
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.b0dca576e87d7eaa5850ae4e61759c065786cdb6489d68fcc82240539eebd5da522bdb4fda085ffd245808c8fe2acb2516408eb774ef26b5f6015fc6737c0ea8.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj&#43;KsslFkCOt3TvJrX2AV/Gc3wOqA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/components/carousel.8e65f2c27285218feed8ca2a6e12a80ec2fb4be8f774b7c74d9642f1bc528a3352288a700a64a0e1e3c38a40b74c978b5dbbeb38346202b5f7613d8fc023e3c9.css"
+    integrity="sha512-jmXywnKFIY/u2MoqbhKoDsL7S&#43;j3dLfHTZZC8bxSijNSKIpwCmSg4ePDikC3TJeLXbvrODRiArX3YT2PwCPjyQ==">
+  
+  
+  <script
+    defer
+    type="text/javascript"
+    src="/lib/tw-elements/index.min.5ffccf337b773ee831515cdde152c8039e972dd479f7dffb0532a79de9a6de5926154ae2587f181ed6c06a99aee25667096bcf6495da5aa86e235d98baee5943.js"
+    integrity="sha512-X/zPM3t3PugxUVzd4VLIA56XLdR599/7BTKnnemm3lkmFUriWH8YHtbAapmu4lZnCWvPZJXaWqhuI12Yuu5ZQw=="></script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+  
+  
+    <script src="/js/shortcodes/tabs.min.47bd252d0e226cd6c6bc5df001d7bcc48f58e7b8a1966a94508d5ca6906f5981152308c8504aa668a0e5dd94b9542e595a899f306ffe38f8dd9b25cbb227d6dc.js" integrity="sha512-R70lLQ4ibNbGvF3wAde8xI9Y57ihlmqUUI1cppBvWYEVIwjIUEqmaKDl3ZS5VC5ZWomfMG/&#43;OPjdmyXLsifW3A==" crossorigin="anonymous"></script>
+  
+
+
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "State of the Homelab 2026",
+    "headline": "State of the Homelab 2026",
+    "description": "An overview of my compact yet powerful Proxmox-based homelab, the hardware behind it, and the services it currently hosts",
+    "inLanguage": "en",
+    "url" : "http://localhost:1313/posts/state-of-the-homelab-2026/",
+    "author" : {
+      "@type": "Person",
+      "name": "Kasonde A. Sefuke"
+    },
+    "copyrightYear": "2026",
+    "dateCreated": "2026-01-01T20:27:30\u002b00:00",
+    "datePublished": "2026-01-01T20:27:30\u002b00:00",
+    
+    "dateModified": "2026-01-01T20:27:30\u002b00:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1842"
+  }]
+  </script>
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <body class="flex flex-col h-screen m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32 text-lg bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content">
+        <span class="font-bold text-primary-600 pe-2 dark:text-primary-400">&darr;</span>
+        Skip to main content
+      </a>
+    </div>
+    
+    
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between py-6 md:justify-start gap-x-3 pt-[2px] pr-2 md:pr-4 pb-[3px] pl-0">
+  
+  
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/" class="text-base font-medium">
+          Ksefuke-labs
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+      
+        
+  <a
+  href="/about/about/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="About"
+  title="">
+  
+  
+    <p class="text-base font-medium">
+      About
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href=""
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="CV/Resume"
+  title="">
+  
+  
+    <p class="text-base font-medium">
+      CV/Resume
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="/posts/"
+  
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="Posts"
+  title="Posts">
+  
+  
+    <p class="text-base font-medium">
+      Posts
+    </p>
+  
+</a>
+
+
+
+      
+        
+  <a
+  href="https://github.com/ksefuke-labs"
+  target="_blank"
+  class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="github"
+  title="">
+  
+    <span >
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span>
+    </span>
+  
+  
+</a>
+
+
+
+      
+    
+
+    
+
+    
+
+    
+      <button
+        id="search-button"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="Search (/)">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <div class=" flex items-center">
+        <button
+          id="appearance-switcher"
+          aria-label="Dark mode switcher"
+          type="button"
+          class="text-base hover:text-primary-600 dark:hover:text-primary-400">
+          <div class="flex items-center justify-center dark:hidden">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+          </div>
+          <div class="items-center justify-center hidden dark:flex">
+            <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+          </div>
+        </button>
+      </div>
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+
+    
+      <button
+        id="search-button-mobile"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="Search (/)">
+        <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+      </button>
+    
+
+    
+      <button
+        id="appearance-switcher-mobile"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400 me-1">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="fixed inset-0 z-30 invisible w-screen h-screen m-0 overflow-auto transition-opacity opacity-0 cursor-default bg-neutral-100/50 backdrop-blur-sm dark:bg-neutral-900/50 pt-[5px]">
+          <ul
+            class="flex space-y-2 mt-3 flex-col items-end w-full px-6 py-6 mx-auto overflow-visible list-none text-end max-w-7xl">
+            <li id="menu-close-button">
+              <span
+                class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">
+                <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+              </span>
+            </li>
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/about/about/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="About"
+    title="">
+    
+    
+      <p class="text-bg font-bg">
+        About
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href=""
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="CV/Resume"
+    title="">
+    
+    
+      <p class="text-bg font-bg">
+        CV/Resume
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="/posts/"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="Posts"
+    title="Posts">
+    
+    
+      <p class="text-bg font-bg">
+        Posts
+      </p>
+    
+  </a>
+</li>
+
+
+
+            
+              
+  <li class="mt-1">
+  <a
+    href="https://github.com/ksefuke-labs"
+    
+      target="_blank"
+    
+    class="flex items-center hover:text-primary-600 dark:hover:text-primary-400"
+    aria-label="github"
+    title="">
+    
+      <div >
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span>
+      </div>
+    
+    
+  </a>
+</li>
+
+
+
+            
+
+          </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+  <article>
+    
+    
+
+    
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        State of the Homelab 2026
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2026-01-01T20:27:30&#43;00:00">1 January 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1842 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">9 mins</span><span class="px-2 text-primary-500">&middot;</span><span class="mb-[2px]">
+  <span
+    id="zen-mode-button"
+    class="text-lg hover:text-primary-500"
+    title="Enable zen mode"
+    data-title-i18n-disable="Enable zen mode"
+    data-title-i18n-enable="Disable zen mode">
+    <span class="inline-block align-text-bottom"><span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
+    <path fill="currentColor" d="M 12.980469 4 C 9.1204688 4 5.9804688 7.14 5.9804688 11 L 6 26 L 9.9804688 26 L 9.9804688 11 C 9.9804688 9.35 11.320469 8 12.980469 8 L 40.019531 8 C 41.679531 8 43.019531 9.35 43.019531 11 L 43.019531 39 C 43.019531 40.65 41.679531 42 40.019531 42 L 29 42 C 29 43.54 28.420938 44.94 27.460938 46 L 40.019531 46 C 43.879531 46 47.019531 42.86 47.019531 39 L 47.019531 11 C 47.019531 7.14 43.879531 4 40.019531 4 L 12.980469 4 z M 7 28 C 4.794 28 3 29.794 3 32 L 3 42 C 3 44.206 4.794 46 7 46 L 23 46 C 25.206 46 27 44.206 27 42 L 27 32 C 27 29.794 25.206 28 23 28 L 7 28 z M 7 32 L 23 32 L 23.001953 42 L 7 42 L 7 32 z"/>
+</svg></span></span>
+  </span>
+</span>
+
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+      </div>
+      
+        
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+      
+    </header>
+
+    
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      
+      
+      
+      
+        <div class="order-first lg:ml-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs">
+          <div class="toc ps-5 print:hidden lg:sticky lg:top-10">
+            
+              <details
+  open
+  id="TOCView"
+  class="toc-right mt-0 overflow-y-auto overscroll-contain scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600 rounded-lg -ms-5 ps-5 pe-2 hidden lg:block">
+  <summary
+    class="block py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="min-w-[220px] py-2 border-dotted border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-start-of-something-new">The Start of something new</a></li>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#choice-of-hardware-at-the-start-">Choice of hardware (At the start 😅)</a></li>
+    <li><a href="#choice-of-operating-systems">Choice of Operating Systems</a></li>
+    <li><a href="#-choice-of-nas">💽 Choice of NAS</a>
+      <ul>
+        <li><a href="#filesystems---the-bread-and-butter">Filesystems - The bread and butter</a></li>
+        <li><a href="#pcie-passthrough">PCIE PASSTHROUGH</a></li>
+      </ul>
+    </li>
+    <li><a href="#-services">🐕‍🦺 Services</a></li>
+    <li><a href="#-future-improvements">🚀 Future Improvements</a>
+      <ul>
+        <li><a href="#dedicated-hardware-for-baremetal-nas">Dedicated Hardware for Baremetal NAS</a></li>
+        <li><a href="#kubernetes-on-spare-mini-pcs">Kubernetes on spare mini pc&rsquo;s?</a></li>
+        <li><a href="#rack-mountable-25gb-switch">Rack mountable 2.5gb switch</a></li>
+        <li><a href="#experimental-sriov-support-of-intel-igpu">Experimental SRIOV support of Intel IGPU</a></li>
+        <li><a href="#nixos-nas">NIXOS NAS</a></li>
+      </ul>
+    </li>
+    <li><a href="#sources">📚Sources</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+<details class="toc-inside mt-0 overflow-hidden rounded-lg -ms-5 ps-5 lg:hidden">
+  <summary
+    class="py-1 text-lg font-semibold cursor-pointer bg-neutral-100 text-neutral-800 -ms-5 ps-5 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden">
+    Table of Contents
+  </summary>
+  <div
+    class="py-2 border-dotted border-neutral-300 border-s-1 -ms-5 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-start-of-something-new">The Start of something new</a></li>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#choice-of-hardware-at-the-start-">Choice of hardware (At the start 😅)</a></li>
+    <li><a href="#choice-of-operating-systems">Choice of Operating Systems</a></li>
+    <li><a href="#-choice-of-nas">💽 Choice of NAS</a>
+      <ul>
+        <li><a href="#filesystems---the-bread-and-butter">Filesystems - The bread and butter</a></li>
+        <li><a href="#pcie-passthrough">PCIE PASSTHROUGH</a></li>
+      </ul>
+    </li>
+    <li><a href="#-services">🐕‍🦺 Services</a></li>
+    <li><a href="#-future-improvements">🚀 Future Improvements</a>
+      <ul>
+        <li><a href="#dedicated-hardware-for-baremetal-nas">Dedicated Hardware for Baremetal NAS</a></li>
+        <li><a href="#kubernetes-on-spare-mini-pcs">Kubernetes on spare mini pc&rsquo;s?</a></li>
+        <li><a href="#rack-mountable-25gb-switch">Rack mountable 2.5gb switch</a></li>
+        <li><a href="#experimental-sriov-support-of-intel-igpu">Experimental SRIOV support of Intel IGPU</a></li>
+        <li><a href="#nixos-nas">NIXOS NAS</a></li>
+      </ul>
+    </li>
+    <li><a href="#sources">📚Sources</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+
+
+            
+          </div>
+        </div>
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+        <div class="article-content max-w-prose mb-20">
+          <p>I&rsquo;m quite proud of the Homelab Stack I&rsquo;ve created, it&rsquo;s certainly grown over the years.
+It started off as a means of storing and streaming of my purchased music and progressed into something else entirely.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+<div class="width-patch"></div>
+<div
+  id="carousel-c4e0455b6ad50308d3edf80c63eccc65-1767468035724322255"
+  class="relative"
+  data-twe-carousel-init
+  data-twe-ride="carousel"
+  data-twe-interval="3500">
+  <div
+    class="absolute right-0 bottom-0 left-0 z-2 mx-[15%] mb-10 flex list-none justify-center p-0"
+    data-twe-carousel-indicators>
+    
+    
+      <button
+        type="button"
+        data-twe-target="#carousel-c4e0455b6ad50308d3edf80c63eccc65-1767468035724322255"
+        data-twe-slide-to="0"
+        data-twe-carousel-active aria-current="true"
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-neutral bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-label="Slide 0"></button>
+      
+    
+      <button
+        type="button"
+        data-twe-target="#carousel-c4e0455b6ad50308d3edf80c63eccc65-1767468035724322255"
+        data-twe-slide-to="1"
+        
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-neutral bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-label="Slide 1"></button>
+      
+    
+      <button
+        type="button"
+        data-twe-target="#carousel-c4e0455b6ad50308d3edf80c63eccc65-1767468035724322255"
+        data-twe-slide-to="2"
+        
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-neutral bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-label="Slide 2"></button>
+      
+    
+      <button
+        type="button"
+        data-twe-target="#carousel-c4e0455b6ad50308d3edf80c63eccc65-1767468035724322255"
+        data-twe-slide-to="3"
+        
+        class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-neutral bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+        aria-label="Slide 3"></button>
+      
+    
+  </div>
+
+  <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+    
+      
+      <div
+        class="relative float-left -mr-[100%]  w-full transition-transform ease-in-out motion-reduce:transition-none"
+        data-twe-carousel-item
+        style="transition-duration: 3500ms;"
+        data-twe-carousel-active>
+        <div class="single_hero_background" style="aspect-ratio: 16 / 9;">
+          <img
+            src="/posts/state-of-the-homelab-2026/opnsense-dash.png"
+            class="block absolute top-0 object-cover w-full h-full not-prose nozoom"
+            alt="carousel image 1">
+        </div>
+      </div>
+    
+      
+      <div
+        class="relative float-left -mr-[100%] hidden w-full transition-transform ease-in-out motion-reduce:transition-none"
+        data-twe-carousel-item
+        style="transition-duration: 3500ms;"
+        >
+        <div class="single_hero_background" style="aspect-ratio: 16 / 9;">
+          <img
+            src="/posts/state-of-the-homelab-2026/pve-dash.png"
+            class="block absolute top-0 object-cover w-full h-full not-prose nozoom"
+            alt="carousel image 2">
+        </div>
+      </div>
+    
+      
+      <div
+        class="relative float-left -mr-[100%] hidden w-full transition-transform ease-in-out motion-reduce:transition-none"
+        data-twe-carousel-item
+        style="transition-duration: 3500ms;"
+        >
+        <div class="single_hero_background" style="aspect-ratio: 16 / 9;">
+          <img
+            src="/posts/state-of-the-homelab-2026/omv-dash.png"
+            class="block absolute top-0 object-cover w-full h-full not-prose nozoom"
+            alt="carousel image 3">
+        </div>
+      </div>
+    
+      
+      <div
+        class="relative float-left -mr-[100%] hidden w-full transition-transform ease-in-out motion-reduce:transition-none"
+        data-twe-carousel-item
+        style="transition-duration: 3500ms;"
+        >
+        <div class="single_hero_background" style="aspect-ratio: 16 / 9;">
+          <img
+            src="/posts/state-of-the-homelab-2026/jellyfin-music.png"
+            class="block absolute top-0 object-cover w-full h-full not-prose nozoom"
+            alt="carousel image 4">
+        </div>
+      </div>
+    
+  </div>
+
+  <button
+    class="absolute top-0 bottom-0 left-0 z-2 flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:no-underline hover:opacity-90 hover:outline-none focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+    type="button"
+    data-twe-target="#carousel-c4e0455b6ad50308d3edf80c63eccc65-1767468035724322255"
+    data-twe-slide="prev">
+    <span class="inline-block h-8 w-8">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="4.5"
+        stroke="currentColor"
+        class="h-6 w-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+    </span>
+    <span
+      class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+      >Previous</span
+    >
+  </button>
+
+  <button
+    class="absolute top-0 bottom-0 right-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:no-underline hover:opacity-90 hover:outline-none focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+    type="button"
+    data-twe-target="#carousel-c4e0455b6ad50308d3edf80c63eccc65-1767468035724322255"
+    data-twe-slide="next">
+    <span class="inline-block h-8 w-8">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="4.5"
+        stroke="currentColor"
+        class="h-6 w-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </span>
+    <span
+      class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+      >Next</span
+    >
+  </button>
+</div>
+
+<p>This post details my home lab adventures so far and whats to come in the future</p>
+
+<h2 class="relative group">The Start of something new
+    <div id="the-start-of-something-new" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#the-start-of-something-new" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>I&rsquo;ve never been a fan of music streaming services like spotify as i prefer to own my music and have built up a quite a large collection over the years. I also didn&rsquo;t like the idea of storing personal files using cloud storage providers like google drive, Microsoft Onedrive and Apple Icloud.
+A Synology Nas was an option but i really wanted to build something myself.</p>
+<p>A spectacular video from German Youtuber &ldquo;<a href="https://www.youtube.com/@WolfgangsChannel"  target="_blank">Wolfgang&rsquo;s Channel</a>&rdquo; detailing the build process for a custom NAS sparked my <a href="https://www.youtube.com/watch?v=qACTvCW_yDc"  target="_blank">interest</a>, i but was turned off due to my lack understanding of Linux at the time (2021).
+It wasn&rsquo;t until i deleted my windows install and fully migrated to Arch Linux back in 2022 that i decided to revisit the idea again with new found vigour.</p>
+
+<h2 class="relative group">Objectives
+    <div id="objectives" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#objectives" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>Me being the over thinker that i am wanted to identify all of my current requirements and take future requirements into consideration:</p>
+<ul>
+<li>All in one - Wanted to be able to host services in addition it being a NAS.</li>
+<li>Quiet and power efficient - Server would live in my room, on my desk so it couldn&rsquo;t be loud.</li>
+<li>Small - Ideally ITX form factor so it&rsquo;s not cumbersome to tinker with or store.</li>
+<li>No vendor lock in or subscriptions - The Primary reason for doing this</li>
+<li>Flexible and Cheap to expand/scale</li>
+</ul>
+
+<h2 class="relative group">Choice of hardware (At the start 😅)
+    <div id="choice-of-hardware-at-the-start-" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#choice-of-hardware-at-the-start-" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>At the start i made of use of several components i had lying around from my first PC build and purchased everything else, see <strong>link</strong> for my adventures into the PC master iceberg:</p>
+<div class="tab__container w-full">
+  <div class="tab__nav" role="tablist">
+    <div class="flex gap-1 overflow-x-auto"><button
+          class="tab__button px-3 py-2 text-sm font-semibold border-b-2 border-transparent rounded-t-md hover:bg-neutral-200 dark:hover:bg-neutral-700 
+            tab--active
+          "
+          role="tab"
+          aria-selected="true"
+          data-tab-index="0">
+          DECEMBER 2022
+        </button><button
+          class="tab__button px-3 py-2 text-sm font-semibold border-b-2 border-transparent rounded-t-md hover:bg-neutral-200 dark:hover:bg-neutral-700 "
+          role="tab"
+          aria-selected="false"
+          data-tab-index="1">
+          SEPTEMBER 2023 - NOVEMBER 2023
+        </button><button
+          class="tab__button px-3 py-2 text-sm font-semibold border-b-2 border-transparent rounded-t-md hover:bg-neutral-200 dark:hover:bg-neutral-700 "
+          role="tab"
+          aria-selected="false"
+          data-tab-index="2">
+          JUNE 2024 - AUGUST 2025
+        </button></div>
+  </div>
+  <div class="tab__content mt-4"><div class="tab__panel tab--active" data-tab-index="0">
+        <table>
+  <thead>
+      <tr>
+          <th><strong>Case</strong></th>
+          <th><a href="https://www.jonsbo.com/en/products/N1.html"  target="_blank">Jonsbo n1</a></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>CPU</strong></td>
+          <td><a href="https://www.intel.com/content/www/us/en/products/sku/88185/intel-core-i56400-processor-6m-cache-up-to-3-30-ghz/specifications.html"  target="_blank">Intel Core i5-6400 </a></td>
+      </tr>
+      <tr>
+          <td><strong>Cooler</strong></td>
+          <td>Cryorig C7</td>
+      </tr>
+      <tr>
+          <td><strong>Motherboard</strong></td>
+          <td><a href="https://www.msi.com/Motherboard/B150I-GAMING-PRO-AC/Specification"  target="_blank">MSI B150I Gaming PRO AC</a></td>
+      </tr>
+      <tr>
+          <td><strong>Memory</strong></td>
+          <td>2 x 8 GB DDR4-2400 CL16</td>
+      </tr>
+      <tr>
+          <td><strong>Power Supply</strong></td>
+          <td><a href="https://www.evga.com/Products/Specs/PSU.aspx?pn=9D224A7D-D321-4350-A2FA-C8366DF799A4"  target="_blank">EVGA SuperNOVA 650 G1+</a></td>
+      </tr>
+      <tr>
+          <td><strong>Boot Drive</strong></td>
+          <td><a href="https://www.seagate.com/gb/en/support/internal-hard-drives/ssd/firecuda-520-ssd/?sku=ZP1000GV3A012#Specs"  target="_blank">2 TB Seagate Firacuda NVMe 520</a></td>
+      </tr>
+      <tr>
+          <td><strong>NAS Storage</strong></td>
+          <td>2 x <a href="https://www.westerndigital.com/en-gb/products/internal-drives/data-center-drives/ultrastar-dc-hc520-hdd?sku=0F30146"  target="_blank">12 TB Western Digital Red Plus HDD </a>+ 1 TB Seagate Barracuda HDD</td>
+      </tr>
+      <tr>
+          <td><strong>Network</strong></td>
+          <td>1GbE Realtek® RTL8111H NIC</td>
+      </tr>
+      <tr>
+          <td><strong>Add-on Cards</strong></td>
+          <td>LSI HBA PCIe 2.0 SAS Card (IT mode)</td>
+      </tr>
+  </tbody>
+</table>
+
+      </div><div class="tab__panel " data-tab-index="1">
+        <table>
+  <thead>
+      <tr>
+          <th><strong>CPU</strong></th>
+          <th><a href="https://www.intel.com/content/www/us/en/products/sku/96140/intel-core-i512500t-processor-18m-cache-up-to-4-40-ghz/specifications.html"  target="_blank">Intel Core i5-12500T</a></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Motherboard</strong></td>
+          <td><a href="https://www.asrock.com/mb/Intel/Z690M-ITXax/"  target="_blank">ASRock Z690 ITX</a></td>
+      </tr>
+      <tr>
+          <td><strong>Memory</strong></td>
+          <td>2 x 32GB DDR4 3200MHz CL22</td>
+      </tr>
+      <tr>
+          <td><strong>Case</strong></td>
+          <td><a href="https://www.jonsbo.com/en/products/N1.html"  target="_blank">Jonsbo n1</a></td>
+      </tr>
+      <tr>
+          <td><strong>Boot Drive + VM Storage</strong></td>
+          <td>2 x <a href="https://lenovopress.lenovo.com/lp0755-intel-s4500-entry-sata-6gb-ssds"  target="_blank">1.92TB Intel S4500 SSDs</a></td>
+      </tr>
+      <tr>
+          <td><strong>NAS Storage</strong></td>
+          <td>2 x <a href="https://www.westerndigital.com/en-gb/products/internal-drives/data-center-drives/ultrastar-dc-hc520-hdd?sku=0F30146"  target="_blank">12TB Western Digital Red Plus HDD </a><br>1 x <a href="https://www.kingston.com/datasheets/DC500R_us.pdf"  target="_blank">3.84TB Kingston DC500R SSD</a><br>1 x 1TB Seagate Barracuda HDD</td>
+      </tr>
+      <tr>
+          <td><strong>Network</strong></td>
+          <td>2.5 GbE Realtek NIC + 1GbE Intel I219V NIC</td>
+      </tr>
+  </tbody>
+</table>
+
+      </div><div class="tab__panel " data-tab-index="2">
+        <table>
+  <thead>
+      <tr>
+          <th><strong>CPU</strong></th>
+          <th><a href="https://www.intel.com/content/www/us/en/products/sku/236784/intel-core-i5-processor-14500-24m-cache-up-to-5-00-ghz/specifications.html"  target="_blank">Intel Core i5-14500</a></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Motherboard</strong></td>
+          <td><a href="https://www.asrock.com/mb/Intel/Z690M-ITXax/"  target="_blank">ASRock Z690 ITX</a></td>
+      </tr>
+      <tr>
+          <td><strong>Memory</strong></td>
+          <td>2 x 32GB DDR4 3200MHz CL22</td>
+      </tr>
+      <tr>
+          <td><strong>Case</strong></td>
+          <td><a href="https://www.silverstonetek.com/en/product/info/server-nas/RM21-308/"  target="_blank">Silverstone RM21-308</a></td>
+      </tr>
+      <tr>
+          <td><strong>Boot Drive</strong></td>
+          <td>1 x <a href="https://lenovopress.lenovo.com/lp0056-s3510-enterprise-entry-sata-ssds"  target="_blank">480GB Intel S3510 SSD</a></td>
+      </tr>
+      <tr>
+          <td><strong>VM Storage</strong></td>
+          <td><a href="https://www.seagate.com/gb/en/support/internal-hard-drives/ssd/firecuda-520-ssd/?sku=ZP1000GV3A012#Specs"  target="_blank">2 TB Seagate Firacuda NVMe 520</a> + Intel S4500 960GB SSD</td>
+      </tr>
+      <tr>
+          <td><strong>NAS Storage</strong></td>
+          <td>1 x <a href="https://www.transcend-info.com/embedded/product/embedded-ssd-solutions/ssd470k-ssd470k-i"  target="_blank">4TB Transcend SSD470K SSD</a><br>1 x <a href="https://www.kingston.com/datasheets/DC500R_us.pdf"  target="_blank">3.84TB Kingston DC500R SSD</a><br>2 x <a href="https://www.westerndigital.com/en-gb/products/internal-drives/wd-red-plus-sata-3-5-hdd?sku=WD120EFGX"  target="_blank">12TB Western Digital Red Plus HDDs</a><br>2 x <a href="https://www.westerndigital.com/en-gb/products/internal-drives/data-center-drives/ultrastar-dc-hc520-hdd?sku=0F30146"  target="_blank">12TB Ultrastar DC HC520 HDDs</a></td>
+      </tr>
+      <tr>
+          <td><strong>Network</strong></td>
+          <td>2.5 GbE NIC</td>
+      </tr>
+  </tbody>
+</table>
+<p>And 2 Mini PCs from Ebay with the same specs (The deals were too good to pass)</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>PC</strong></th>
+          <th><a href="https://www.minisforum.com/products/minisforum-un100p-1"  target="_blank">MINISFORUM UN100P</a></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Memory</strong></td>
+          <td>1 x 16GB DDR4 3200MHz SODIMM</td>
+      </tr>
+      <tr>
+          <td><strong>Boot + VM Drive</strong></td>
+          <td>1 x <a href="https://lenovopress.lenovo.com/lp0755-intel-s4500-entry-sata-6gb-ssds"  target="_blank">Intel S4500 1.92TB SSD</a></td>
+      </tr>
+      <tr>
+          <td><strong>VM Storage</strong></td>
+          <td>1 X <a href="https://www.seagate.com/gb/en/support/internal-hard-drives/nas-drives/ironwolf-525-ssd/"  target="_blank">1TB IronWolf 525</a></td>
+      </tr>
+      <tr>
+          <td><strong>Network</strong></td>
+          <td>2.5 GbE NIC</td>
+      </tr>
+  </tbody>
+</table>
+      </div></div>
+</div>
+
+
+<h2 class="relative group">Choice of Operating Systems
+    <div id="choice-of-operating-systems" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#choice-of-operating-systems" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p>To satisfy the &ldquo;all in one&rdquo; requirement for my homelab i could have just installed ubuntu server edition and left it at that. But me being the chronic tinkerer that i am wanted to be able to break things without having reinstall the core os (Had already broken several arch based installs already at this point).
+I stumbled across <a href="https://perfectmediaserver.com/"  target="_blank">Perfect Media Server </a>by Alex Kretzschmar which suggested using proxmox as the core OS.</p>
+<p><a href="https://www.proxmox.com/en/products/proxmox-virtual-environment/overview"  target="_blank">Proxmox VE</a> is a type 1 hypervisor based on debian that&rsquo;s free to deploy, has very few limits imposed on users without a Enterprise Subscription and has a fantastic web interface and shell. It can used to provision traditional virtual machines and linux containers (LXC).
+![[image-70.png|1422x800]]</p>
+<p>I do have experience supporting Vmware infrastructure in my MSP Cloud Analyst role but didn&rsquo;t consider it an option due to the shear difference in free feature set (in 2023):</p>
+<p><strong>Proxmox VE:</strong></p>
+<ul>
+<li>Full clustering capabilities</li>
+<li>High availability</li>
+<li>Live migration</li>
+<li>Backup and restore tools with advanced features (deduplication, compression, incremental backups)</li>
+<li>Both KVM (full virtualization) and LXC (containers)</li>
+<li>Web-based management interface</li>
+<li>ZFS, LVM, iSCSI, NFS storage support</li>
+<li>No core or memory limitations</li>
+</ul>
+<p><strong>VMware ESXi:</strong></p>
+<ul>
+<li>Could only run on a limited number of cores and had extremely limited memory</li>
+<li>No vCenter Server access - Centralised Panel/dashboard for managing multiple ESXI servers.</li>
+<li>No Distributed Resource Scheduler</li>
+<li>No fault tolerance</li>
+<li>Free Edition completely dropped into 2024 accompanied by significant licensing changes which burned a lot of companies wallets.</li>
+</ul>
+<hr>
+
+<h2 class="relative group">💽 Choice of NAS
+    <div id="-choice-of-nas" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#-choice-of-nas" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p><a href="https://www.openmediavault.org/"  target="_blank">Openmediavault </a>was my goto NAS option at the time. Its based on Debian under the hood and provided all require services (<a href="https://wiki.archlinux.org/title/Hdparm"  target="_blank">Hdparm</a>, NFS, Rsync, SSH, S.M.A.R.T, SMB )  out of the box or via <a href="https://wiki.omv-extras.org/doku.php?id=start"  target="_blank">plugins</a> (ZFS Support).
+<strong>Note</strong> - I will admit the initial configuration of services and disks can be quite tedious due to the config confirmation nature of OMV, every change needs to be confirmed/applied and it&rsquo;s in your best interest to not commit multiple changes at once. As a config error may force you revert them. (Speaking from experience)</p>
+<p>There were other DIY solutions at the time, but these didn&rsquo;t meet my requirements for a number of reasons:</p>
+<ul>
+<li>Ubuntu Server (CLI) - I wasn&rsquo;t comfortable manually configuring all backed services at the time and wanted something that just worked so i start tinkering with services. There are gui apps such Red Hat&rsquo;s <a href="https://cockpit-project.org/"  target="_blank">Cockpit </a> and <a href="https://webmin.com/"  target="_blank">webmin</a> which can installed on ubuntu server, but i found those to be a bit finicky. Obviously now i am aware the CLI is the superior way due to things with scripting and automation.</li>
+<li><a href="https://account.unraid.net/buy"  target="_blank">Unraid </a>- requires a license to use after 30 days. It was also way too web gui oriented for my liking. <strong>Note</strong> - There is a fork of unraid open-source <code>md_unraid</code> kernel driver called <a href="https://github.com/qvr/nonraid"  target="_blank">non-raid</a></li>
+<li><a href="https://www.truenas.com/truenas-community-edition/"  target="_blank">TrueNAS&rsquo;</a> ZFS is a fantastic filesystem, but it requires all the drives to be spun up all the time (see this <a href="https://forums.truenas.com/t/hdd-sleep-spindown-standby/13325/120"  target="_blank">post</a>🙃) which increases power usage by 20w-30w. In addition to require purchasing drives in sets to expand available storage depending on the raid setup.</li>
+</ul>
+
+<h3 class="relative group">Filesystems - The bread and butter
+    <div id="filesystems---the-bread-and-butter" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#filesystems---the-bread-and-butter" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Below are the filesystems in use:</p>
+<p>XFS - Deployed on a
+ZFS - File system for mission critical data i.e family photo</p>
+<ul>
+<li><strong>mergerfs</strong> is used to combine multiple disks into a <strong>single unified directory</strong></li>
+<li>Pools multiple drives into one mountable volume</li>
+<li>Supports addition <em>and</em> removal of devices with no rebuild times</li>
+<li>Permits drives with mismatched sizes with no penalties</li>
+<li>Each drive has an individually readable filesystem (ext4, xfs, zfs, etc)</li>
+<li>Drives may contain data when mounted via Mergerfs</li>
+<li>Simple configuration with one line in <code>/etc/fstab</code> (example below)</li>
+</ul>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">/mnt/disk* /mnt/storage fuse.mergerfs defaults,nonempty,allow_other,use_ino,cache.files=off,moveonenospc=true,category.create=mfs,dropcacheonclose=true,minfreespace=250G,fsname=mergerfs 0 0</span></span></code></pre></div></div>
+<p>![[image-71.png|1009x800]]</p>
+<ul>
+<li>Provide fault tolerance to protect against (inevitable) hard drive failure</li>
+<li>Checksum files to guard against bitrot</li>
+<li>Support hard drives of differing / mismatched sizes</li>
+<li>Enable incremental upgrading of hard drives in batches as small as one</li>
+<li>Each drive should have a separately readable filesystem with no striping of data
+![[image-74.png|769x800]]</li>
+</ul>
+
+<h3 class="relative group">PCIE PASSTHROUGH
+    <div id="pcie-passthrough" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#pcie-passthrough" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Did i forget mention the NAS was virtualized? While researching Proxmox i discovered you can pass-through <a href="https://pve.proxmox.com/wiki/PCI%28e%29_Passthrough"  target="_blank">PCIE devices</a> into VMs so they appear as native devices.
+The idea of leaving the NAS disk exposed on proxmox and provisioning block storage from them to be virtualized on OMV felt gross and i wanted near native performance from OMV</p>
+<p>Below is the general process for systems using systemd-boot:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 1. Confirm VT-d (Intel) or AMD-Vi (AMD) is available/enabled in the bios for IOMMU support.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 2. Configure kernel command line for IOMMU</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;intel_iommu=on iommu=pt&#34;</span> &gt; /etc/kernel/cmdline
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. Configure required VFIO modules</span>
+</span></span><span class="line"><span class="cl">cat &gt; /etc/modules <span class="s">&lt;&lt; &#39;EOF&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">vfio
+</span></span></span><span class="line"><span class="cl"><span class="s">vfio_iommu_type1
+</span></span></span><span class="line"><span class="cl"><span class="s">vfio_pci
+</span></span></span><span class="line"><span class="cl"><span class="s">vfio_virqfd
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Verify VFIP Modules are loaded</span>
+</span></span><span class="line"><span class="cl">lsmod <span class="p">|</span> grep vfio
+</span></span><span class="line"><span class="cl"><span class="c1"># Confirm IOMMU is enabled via </span>
+</span></span><span class="line"><span class="cl">dmesg <span class="p">|</span> grep -e DMAR -e IOMMU
+</span></span><span class="line"><span class="cl"><span class="c1"># Identify PCI IDS/drivers using LSPCI</span>
+</span></span><span class="line"><span class="cl">lspci -nnk
+</span></span><span class="line"><span class="cl"><span class="c1"># 3. Configure VFIO PCI IDs and blacklist conflicting drivers</span>
+</span></span><span class="line"><span class="cl">cat &gt; /etc/modprobe.d/pve-blacklist.conf <span class="s">&lt;&lt; &#39;EOF&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">options vfio-pci ids=1000:0072,8086:4690
+</span></span></span><span class="line"><span class="cl"><span class="s">blacklist mpt3sas
+</span></span></span><span class="line"><span class="cl"><span class="s">blacklist i915
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 4. Apply changes</span>
+</span></span><span class="line"><span class="cl">proxmox-boot-tool refresh <span class="o">&amp;&amp;</span> update-initramfs -u -k all</span></span></code></pre></div></div>
+<p>Once this is done the driver in use should change to &ldquo;<strong>vfio-pci</strong>&rdquo;
+LSI HBA SAS Controller:</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">01:00.0 RAID bus controller <span class="o">[</span>0104<span class="o">]</span>: Broadcom / LSI SAS2008 PCI-Express Fusion-MPT SAS-2 <span class="o">[</span>Falcon<span class="o">]</span> <span class="o">[</span>1000:0072<span class="o">]</span> <span class="o">(</span>rev 03<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        Subsystem: Fujitsu Technology Solutions HBA Ctrl SAS 6G 0/1 <span class="o">[</span>D2607<span class="o">]</span> <span class="o">[</span>1734:1177<span class="o">]</span>
+</span></span><span class="line"><span class="cl">        Kernel driver in use: vfio-pci
+</span></span><span class="line"><span class="cl">        Kernel modules: mpt3sas</span></span></code></pre></div></div>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">00:02.0 VGA compatible controller <span class="o">[</span>0300<span class="o">]</span>: Intel Corporation AlderLake-S GT1 <span class="o">[</span>8086:4680<span class="o">]</span> <span class="o">(</span>rev 0c<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        Subsystem: ASRock Incorporation Device <span class="o">[</span>1849:4680<span class="o">]</span>
+</span></span><span class="line"><span class="cl">        Kernel driver in use: vfio-pci
+</span></span><span class="line"><span class="cl">        Kernel modules: i915, xe</span></span></code></pre></div></div>
+<hr>
+
+<h2 class="relative group">🐕‍🦺 Services
+    <div id="-services" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#-services" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<ul>
+<li>Crowdsec - Multi server Config</li>
+<li>Home Assistant</li>
+<li>Hugo Webserver (Used before switching to local development)</li>
+<li>Immich</li>
+<li>Jellyfin (Music Streaming)</li>
+<li>Kasm Workspaces</li>
+<li>LinuxGSM</li>
+<li>Navidrome</li>
+<li>Nginx Proxy Manager Plus (Has crowdsec nginx bouncer support)</li>
+<li>Obsidian Livesync (via Couchdb)</li>
+<li>Pelican Panel</li>
+<li>Portainer</li>
+<li>Pterodactyl</li>
+<li>Tailscale</li>
+<li>Technitium DNS</li>
+<li>Vikunja</li>
+<li>Wazuh Siem - in testing</li>
+</ul>
+<hr>
+
+<h2 class="relative group">🚀 Future Improvements
+    <div id="-future-improvements" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#-future-improvements" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+
+<h3 class="relative group">Dedicated Hardware for Baremetal NAS
+    <div id="dedicated-hardware-for-baremetal-nas" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#dedicated-hardware-for-baremetal-nas" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>Running a NAS as a virtual machine has proven to be quite stable and flexible.  But i would love to move it to dedicated hardware at some point, there is something about the setup that makes me feel like it&rsquo;s a snake eating it&rsquo;s own tail. Especially isn&rsquo;t helpful if i have to switch of the proxmox node for maintenance. Considering getting another 2u chassis and moving proxmox to that instead?</p>
+
+<h3 class="relative group">Kubernetes on spare mini pc&rsquo;s?
+    <div id="kubernetes-on-spare-mini-pcs" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#kubernetes-on-spare-mini-pcs" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>I honestly haven&rsquo;t touched the 2 minisforum n100d mini pcs i bought them back in June besides installing proxmox on them, i bought them with initial idea of clustering them and messing with zfs/ceph replication. But i decided against it as i didn&rsquo;t have enough services to warrant spreading them out. Now with my migration to Kubernetes from docker underway. I plan to install K3S or Talos Linux on them directly and cluster them</p>
+
+<h3 class="relative group">Rack mountable 2.5gb switch
+    <div id="rack-mountable-25gb-switch" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#rack-mountable-25gb-switch" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<p>I would like to purchase a 2.5gb managed switch, i tried Mikrotik 2.5gbe switch however it was way too loud and would ports would randomly drop out.
+The 1GBE bandwidth limitation imposed my mikrotik isn&rsquo;t causing 30 pound is potential temporary solution, but i would like something with at 12 ports that is rack mountable</p>
+
+<h3 class="relative group">Experimental SRIOV support of Intel IGPU
+    <div id="experimental-sriov-support-of-intel-igpu" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#experimental-sriov-support-of-intel-igpu" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+
+<h3 class="relative group">NIXOS NAS
+    <div id="nixos-nas" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#nixos-nas" aria-label="Anchor">#</a>
+    </span>
+    
+</h3>
+<hr>
+
+<h2 class="relative group">📚Sources
+    <div id="sources" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#sources" aria-label="Anchor">#</a>
+    </span>
+    
+</h2>
+<p><a href="https://liliputing.com/minisforum-un100p-mini-pc-comes-with-intel-n100-and-n150-processor-options/"  target="_blank">https://liliputing.com/minisforum-un100p-mini-pc-comes-with-intel-n100-and-n150-processor-options/</a>
+<a href="https://pve.proxmox.com/wiki/PCI%28e%29_Passthrough"  target="_blank">https://pve.proxmox.com/wiki/PCI(e)_Passthrough</a>
+<a href="https://www.servethehome.com/how-to-pass-through-pcie-nics-with-proxmox-ve-on-intel-and-amd/"  target="_blank">https://www.servethehome.com/how-to-pass-through-pcie-nics-with-proxmox-ve-on-intel-and-amd/</a>
+<a href="https://perfectmediaserver.com/"  target="_blank">Perfect Media Server </a>by Alex Kretzschmar (<a href="https://github.com/ironicbadger"  target="_blank">Ironicbadger</a>)
+<a href="https://www.youtube.com/watch?v=qACTvCW_yDc"  target="_blank">The Perfect Home Server Build! 18TB, 10Gbit LAN, Quiet &amp; Compact</a> by Wolfgang&rsquo;s Channel
+<a href="https://www.youtube.com/watch?v=b-x5CsBDbzg"  target="_blank">Building a Homelab Server Rack</a> by Wolfgang&rsquo;s Channel
+<a href="https://www.youtube.com/watch?v=MucGkPUMjNo"  target="_blank">Building a Power Efficient Home Server!</a>  by Wolfgang&rsquo;s Channel
+<a href="https://www.youtube.com/watch?v=Ppo6C_JhDHM"  target="_blank">Busting 8 Common Homelab Power Efficiency Myths</a>  by Wolfgang&rsquo;s Channel</p>
+
+          
+          
+          
+        </div>
+        
+        
+
+        
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_Posts/State of the Homelab 2026/index.md"
+          data-oid-likes="likes_Posts/State of the Homelab 2026/index.md"></script>
+      
+    </section>
+
+    
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600">
+      <div class="flex justify-between pt-3">
+        <span class="flex flex-col">
+          
+            <a
+              class="flex text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/arch-linux-cli-install/">
+              <span class="leading-6">
+                <span class="inline-block rtl:rotate-180">&larr;</span>&ensp;Arch Linux - CLI Install
+              </span>
+            </a>
+            
+              <span class="ms-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2025-10-25T20:27:30&#43;00:00">25 October 2025</time>
+              </span>
+            
+          
+        </span>
+        <span class="flex flex-col items-end">
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+
+
+  
+
+
+
+
+
+
+<div
+  id="scroll-to-top"
+  class="fixed bottom-6 end-6 z-50 transform translate-y-4 opacity-0 duration-200">
+  <a
+    href="#the-top"
+    class="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top"
+    title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2026
+          Kasonde A. Sefuke
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+      </p>
+    
+  </div>
+  
+    <script>
+      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+        margin: 24,
+        background: "rgba(0,0,0,0.5)",
+        scrollOffset: 0,
+      });
+    </script>
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>

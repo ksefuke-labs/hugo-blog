@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Welcome to Blowfish! on Ksefuke-labs</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in Welcome to Blowfish! on Ksefuke-labs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2026 Kasonde A. Sefuke</copyright>
+    <lastBuildDate>Thu, 01 Jan 2026 20:27:30 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>State of the Homelab 2026</title>
+      <link>http://localhost:1313/posts/state-of-the-homelab-2026/</link>
+      <pubDate>Thu, 01 Jan 2026 20:27:30 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/state-of-the-homelab-2026/</guid>
+      <description></description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/state-of-the-homelab-2026/featured.jpg" />
+    </item>
+    
+    <item>
+      <title>Arch Linux - CLI Install</title>
+      <link>http://localhost:1313/posts/arch-linux-cli-install/</link>
+      <pubDate>Sat, 25 Oct 2025 20:27:30 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/arch-linux-cli-install/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Home Network Setup</title>
+      <link>http://localhost:1313/posts/opnsense-firewall-router/home-network-setup/</link>
+      <pubDate>Fri, 25 Jul 2025 20:24:57 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/opnsense-firewall-router/home-network-setup/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://localhost:1313/about/about/</link>
+      <pubDate>Fri, 25 Jul 2025 20:17:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/about/about/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

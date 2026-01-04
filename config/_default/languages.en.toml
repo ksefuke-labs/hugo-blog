@@ -1,0 +1,43 @@
+disabled = false
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "Ksefuke-labs"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  # logo = "img/logo.png"
+  # secondaryLogo = "img/secondary-logo.png"
+  # description = "My awesome website"
+  # copyright = "Copy, _right?_ :thinking_face:"
+
+[params.author]
+   name = "Kasonde A. Sefuke"
+#   email = "youremail@example.com"
+   image = "profile-pic1.png"
+   imageQuality = 96
+   headline = "My digital bastile where i document my Devops Misadventures shenanigans"
+   bio = "Eternal Homelabber"
+   links = [
+#     { email = "mailto:hello@your_domain.com" },
+#     { link = "https://link-to-some-website.com/" },
+#     { bluesky = "https://bsky.app/profile/username" },
+     { github = "https://github.com/ksefuke-labs" },
+#     { gitlab = "https://gitlab.com/username" },
+#     { google = "https://www.google.com/" },
+     { linkedin = "https://www.linkedin.com/in/kasonde-anthony-sefuke-066b69387" },
+#     { mastodon = "https://mastodon.instance/@username" },
+#     { matrix = "https://matrix.to/#/URI" },
+#     { microsoft = "https://www.microsoft.com/" },
+#     { patreon = "https://www.patreon.com/username" },
+#     { reddit = "https://reddit.com/user/username" },
+#     { telegram = "https://t.me/username" },
+#     { tumblr = "https://username.tumblr.com" },
+#     { twitch = "https://twitch.tv/username" },
+#     { youtube = "https://youtube.com/username" },
+#     { ko-fi = "https://ko-fi.com/username" },
+#     { codeberg = "https://codeberg.org/username"},
+   ]
