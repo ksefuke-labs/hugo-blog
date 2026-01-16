@@ -1,8 +1,9 @@
 # GO Binary Mod
-.go.mod
+go.mod
+.hugo_build.lock
 # Hugo Specific Exclusions
-#/public
-#/resources
+/public
+/resources
 
 # MacOS and VSCode
 /.vscode/
