@@ -1,0 +1,72 @@
+<!-- Bandcamp shortcode for Hugo
+Usage: 
+bandcamp media="mediatype" id="1234567890" tracklist="true" artwork="small"
+or
+bandcamp album 1234567890 true small
+bandcamp track 1234567890
+
+Specify supported mediatype: album, track
+then get id from Bandcamp embed code (album=XXXXX or track=XXXXX)
+Optional parameters:
+- tracklist="true" or third parameter "true" to show tracklist (albums only)
+- artwork="small|big|only" or fourth parameter to control artwork size:
+  - small (default): compact 120px player with small artwork
+  - big: large 350px width with big artwork (470px without tracklist, 720px with tracklist)
+  - only: artwork only display (350x350px, no player controls)
+
+To find your Bandcamp ID:
+1. Go to your album/track on Bandcamp
+2. Click "Share / Embed"
+3. Look at the embed code for album=XXXXX or track=XXXXX
+4. Use that number as your id
+
+Warning: By embedding a Bandcamp player, you agree to Bandcamp's Terms of Service
+-->
+{{- $media := "" -}}
+{{- $id := "" -}}
+{{- $showTracklist := false -}}
+{{- $artwork := "small" -}}
+{{- $height := "120px" -}}
+{{- $width := "100%" -}}
+{{- $maxWidth := "700px" -}}
+{{- if .IsNamedParams -}}
+{{- $media = .Get "media" -}}
+{{- $id = .Get "id" -}}
+{{- if .Get "tracklist" -}}
+{{- $showTracklist = true -}}
+{{- end -}}
+{{- if .Get "artwork" -}}
+{{- $artwork = .Get "artwork" -}}
+{{- end -}}
+{{- else -}}
+{{- $media = .Get 0 -}}
+{{- $id = .Get 1 -}}
+{{- if .Get 2 -}}
+{{- $showTracklist = true -}}
+{{- end -}}
+{{- if .Get 3 -}}
+{{- $artwork = .Get 3 -}}
+{{- end -}}
+{{- end -}}
+{{- if eq $artwork "big" -}}
+{{- $width = "350px" -}}
+{{- $maxWidth = "350px" -}}
+{{- if and $showTracklist (eq $media "album") -}}
+{{- $height = "720px" -}}
+{{- else -}}
+{{- $height = "470px" -}}
+{{- end -}}
+{{- else if eq $artwork "only" -}}
+{{- $width = "350px" -}}
+{{- $maxWidth = "350px" -}}
+{{- $height = "350px" -}}
+{{- else -}}
+{{- if and $showTracklist (eq $media "album") -}}
+{{- $height = "406px" -}}
+{{- end -}}
+{{- end -}}
+{{- $uniqueID := printf "%s-%s-%d" $media $id now.UnixMilli -}}
+<div class="embed music-bandcamp" id="bandcamp-{{ $uniqueID }}"><iframe style="border: 0; width: {{ $width }}; max-width: {{ $maxWidth }}; height: {{ $height }}; display: block;" src="https://bandcamp.com/EmbeddedPlayer/{{ $media }}={{ $id }}/size=large/bgcol=333333/linkcol=e99708/{{ if eq $artwork "only" }}minimal=true/{{ else }}{{ if not $showTracklist }}tracklist=false/{{ end }}{{ if eq $artwork "small" }}artwork=small/{{ end }}{{ end }}transparent=true/" seamless allow="autoplay"><a href="https://bandcamp.com">Listen on Bandcamp</a></iframe></div>
+{{- if .Site.Params.debug -}}
+<script>console.log("Loaded Bandcamp: {{ $media }}/{{ $id }}, tracklist: {{ $showTracklist }}");</script>
+{{- end -}}

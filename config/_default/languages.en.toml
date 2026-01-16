@@ -2,7 +2,7 @@ disabled = false
 languageCode = "en"
 languageName = "English"
 weight = 1
-title = "Ksefuke-labs"
+title = "Ksefuke Labs"
 
 [params]
   displayName = "EN"
@@ -19,10 +19,10 @@ title = "Ksefuke-labs"
 #   email = "youremail@example.com"
    image = "profile-pic1.png"
    imageQuality = 96
-   headline = "My digital bastile where i document my Devops Misadventures shenanigans"
-   bio = "Eternal Homelabber"
+   headline = "*Desktop Support Engineer | Devops Engineer | Avid Listener*"
+   #bio = "Eternal Homelabber"
    links = [
-#     { email = "mailto:hello@your_domain.com" },
+     { email = "mailto:ksefuke@pm.me" },
 #     { link = "https://link-to-some-website.com/" },
 #     { bluesky = "https://bsky.app/profile/username" },
      { github = "https://github.com/ksefuke-labs" },

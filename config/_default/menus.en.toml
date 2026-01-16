@@ -11,30 +11,29 @@
 # ordered by weight from lowest to highest.
 
 [[main]]
-  name = "About"
-  pageRef = "About/About.md"
-  weight = 10
-
-[[main]]
-  name = "Posts"
-  pageRef = "Posts"
-  weight = 20
-
-[[main]]
   pre = "github"
   name = ""
   url = "https://github.com/ksefuke-labs"
-  weight = 30
+  weight = 10
 
+#[[main]]
+#  name = "About"
+#  pageRef = "About/About.md"
+#  weight = 20
+
+[[main]]
+  name = "Articles"
+  pageRef = "/Articles"
+  weight = 30
 
 #[[main]]
 #  name = "Projects"
-#  pageRef = "posts"
-#  weight = 10
+#  pageRef = "/Projects"
+#  weight = 40
 
-[[main]]
-  name = "CV/Resume"
-  weight = 20
+#[[main]]
+#  name = "CV/Resume"
+#  weight = 20
 
 #[[main]]
 #  name = "example sub-menu 1"
