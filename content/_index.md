@@ -1,6 +1,6 @@
 ---
-title: "Welcome to Blowfish!"
-description: "This is a demo of adding content to the homepage."
+title: "Welcome to Ksefuke-Labs"
+description: "My Digital Bastille."
 layoutBackgroundBlur:	true
 ---
 
