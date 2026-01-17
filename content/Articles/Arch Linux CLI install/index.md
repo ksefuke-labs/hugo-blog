@@ -273,16 +273,8 @@ I'm quite comfortable with cachy os on my main rig using [Limine Bootloader](htt
 
 ---
 
-{{< bandcamp album 2673575556 true >}}
-
----
-
-{{< bandcamp album 2673575556 false big >}}
-
----
-
 {{< bandcamp album 2673575556 true big >}}
 
 ---
 
-{{< bandcamp album 2673575556 false only >}}
+{{< youtubeLite id="jXHQ_nJaisk" >}}
