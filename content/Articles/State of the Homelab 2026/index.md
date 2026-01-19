@@ -122,7 +122,11 @@ NFS over samba for file shares was a no brainer as i am literally the only perso
 Did i forget mention the NAS was virtualized? While researching Proxmox i discovered you can pass-through [PCIE devices](https://pve.proxmox.com/wiki/PCI(e)_Passthrough) into VMs so they appear as native devices.
 The idea of leaving the NAS disk exposed on proxmox and provisioning block storage from them to be virtualized on OMV felt gross and i wanted near native performance from OMV
 
-Below is the general process for systems using systemd-boot:
+The code block below contains the setup process for systems using systemd-boot:
+
+<details>
+<summary>Show code</summary>
+
 ```bash
 # 1. Confirm VT-d (Intel) or AMD-Vi (AMD) is available/enabled in the bios for IOMMU support.
 
@@ -153,6 +157,8 @@ EOF
 # 4. Apply changes
 proxmox-boot-tool refresh && update-initramfs -u -k all
 ```
+</details>
+
 Once this is done the driver in use should change to "**vfio-pci**"
 LSI HBA SAS Controller:
 ```bash
@@ -168,6 +174,7 @@ LSI HBA SAS Controller:
         Kernel driver in use: vfio-pci
         Kernel modules: i915, xe
 ```
+
 
 ## Progression of hardware
 The slippery slope that is purchasing parts you don't need because you look at ebay too much.
@@ -290,11 +297,9 @@ The services i'm currently running or have run over the years:
 ## Future Improvements
 
 **Dedicated Hardware for Baremetal NAS**
-Running a NAS as a virtual machine has proven to be quite stable and flexible.  But i would love to move it to dedicated hardware at some point, there is something about the setup that makes me feel like it's a snake eating it's own tail. Especially isn't helpful if i have to switch of the proxmox node for maintenance. Considering getting another 2u chassis and moving proxmox to that instead?
+Running a NAS as a virtual machine has proven to be quite stable and flexible. But i would love to move it to dedicated hardware at some point, there is something about the setup that makes me feel like it's a snake eating it's own tail. Especially isn't helpful if i have to switch off the proxmox node for maintenance. Considering getting another 2u chassis and moving proxmox to that instead?
 
 **Kubernetes on spare mini pc's**
 I honestly haven't touched the 2 minisforum n100d mini pcs i bought them back in June besides installing proxmox on them, i bought them with initial idea of clustering them and messing with zfs/ceph replication. But i decided against it as i didn't have enough services to warrant spreading them out. Now with my migration to Kubernetes from docker underway. I plan to install K3S or Talos Linux on them directly and cluster them
 
-## Tunes to jam to!
-
-{{< bandcamp media="track" id="3612891766" >}}
+{{< bandcamp track 3475272693 >}}

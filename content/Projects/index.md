@@ -20,4 +20,12 @@ These may be called "Projects" but they never have a true ending.
 
 
 
-{{< github repo="ksefuke-labs/Labs" showThumbnail=false >}}
+
+
+{{< github repo="ksefuke-labs/hugo-blog" showThumbnail=false >}}
+
+
+
+
+
+{{< github repo="ksefuke-labs/kubernetes-homelab" showThumbnail=false >}}

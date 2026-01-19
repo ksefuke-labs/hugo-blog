@@ -267,14 +267,4 @@ I'm quite comfortable with cachy os on my main rig using [Limine Bootloader](htt
 - Considering blacklisting certain files from BTRFS/ZFS Snapshot to preventing mismanagement of [sensitive data](https://wiki.archlinux.org/title/Security#Snapshots) snapshot 
 - Test Install of minimal fedora with [Cachy OS optimizations](https://blog.mtaha.dev/performance/fedora_linux_performance_tuning)
 
-## Beats to Listen to (Formatting test)
-
-{{< bandcamp album 2673575556 >}}
-
----
-
-{{< bandcamp album 2673575556 true big >}}
-
----
-
-{{< youtubeLite id="jXHQ_nJaisk" >}}
+{{< bandcamp track 2716073771 >}}

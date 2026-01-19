@@ -16,10 +16,10 @@
   url = "https://github.com/ksefuke-labs"
   weight = 10
 
-#[[main]]
-#  name = "About"
-#  pageRef = "About/About.md"
-#  weight = 20
+[[main]]
+  name = "About"
+  pageRef = "About/About.md"
+  weight = 20
 
 [[main]]
   name = "Articles"
@@ -30,6 +30,11 @@
 #  name = "Projects"
 #  pageRef = "/Projects"
 #  weight = 40
+
+[[main]]
+  name = "Resume"
+  pageRef = "/Resume/resume.md"
+  weight = 40
 
 #[[main]]
 #  name = "CV/Resume"
