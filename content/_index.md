@@ -7,7 +7,7 @@ layoutBackgroundBlur:	true
 {{< typeit 
   tag=h4
   speed=55
-  lifeLike=true
+  lifeLike=false
   breakLines=false
   loop=true
 >}}
