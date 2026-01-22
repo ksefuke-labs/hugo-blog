@@ -302,4 +302,14 @@ Running a NAS as a virtual machine has proven to be quite stable and flexible. B
 **Kubernetes on spare mini pc's**
 I honestly haven't touched the 2 minisforum n100d mini pcs i bought them back in June besides installing proxmox on them, i bought them with initial idea of clustering them and messing with zfs/ceph replication. But i decided against it as i didn't have enough services to warrant spreading them out. Now with my migration to Kubernetes from docker underway. I plan to install K3S or Talos Linux on them directly and cluster them
 
-{{< bandcamp track 3475272693 >}}
+---
+## Beats to Listen to
+
+{{< alert cardColor="#DB4740" textColor="#1B1B1B" >}}
+**ALERT!** - Lower your volume, the embedded bandcamp player doesn't have volume controls and it's quite loud by default
+{{< /alert >}}
+
+**Slowerpace - Learning Time**
+
+Reminds of those old school safari documentaries
+{{< bandcamp track 2716073771 >}}

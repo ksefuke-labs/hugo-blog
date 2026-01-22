@@ -267,4 +267,14 @@ I'm quite comfortable with cachy os on my main rig using [Limine Bootloader](htt
 - Considering blacklisting certain files from BTRFS/ZFS Snapshot to preventing mismanagement of [sensitive data](https://wiki.archlinux.org/title/Security#Snapshots) snapshot 
 - Test Install of minimal fedora with [Cachy OS optimizations](https://blog.mtaha.dev/performance/fedora_linux_performance_tuning)
 
-{{< bandcamp track 2716073771 >}}
+## Beats to listen to
+
+{{< alert cardColor="#DB4740" textColor="#1B1B1B" >}}
+**ALERT!** - Lower your volume, the embedded bandcamp player doesn't have volume controls and it's quite loud by default.
+{{< /alert >}}
+
+**A.L.I.S.O.N - Derniere Ride**
+
+Perfect tune to match the chaos and pandemonium of R4E1 Runs (If you know, you know. If not, be greatful)
+{{< bandcamp track 3460760967 >}}
+

@@ -16,8 +16,14 @@ Since then i've built several PC's, switched to Linux for everything, and built 
 
 Outside of tech, i enjoy listening to music and playing the occasionally indie game.
 
-I will be placing a bandcamp card (not a fan of spotify) at the end of each article, to give you insight into my music taste.
+### Beats to listen to
+I will be placing a bandcamp card at the end of each article, to give you insight into my music taste.
 
-Like this 
+{{< alert cardColor="#DB4740" textColor="#1B1B1B" >}}
+**ALERT!** - Lower your volume, the embedded bandcamp player doesn't have volume controls and it's quite loud by default.
+{{< /alert >}}
 
-{{< bandcamp album 1736441107 >}}
+**Oblique Occasions - Anathema**
+
+The Pinnacle of Barber Beats Tunes
+{{< bandcamp album 4043507259 false big >}}
