@@ -102,4 +102,122 @@ header svg {
 .profile-subtitle,
 [class*=subtitle] {
   color: #928374 !important;
+}/* Gruvbox Material - Mix/Medium/Dark Theme for Hugo Blowfish v2.94.0 */
+
+:root {
+  /* Neutral colors - grayscale progression from bg_dim to fg1 */
+  --color-neutral: 226, 204, 169;        /* fg1 - lightest text */
+  --color-neutral-50: 216, 186, 138;     /* fg0 */
+  --color-neutral-100: 205, 168, 108;    /* orange (secondary-700) */
+  --color-neutral-200: 195, 150, 77;     /* darker orange */
+  --color-neutral-300: 146, 131, 116;    /* grey1 */
+  --color-neutral-400: 124, 111, 100;    /* grey0 */
+  --color-neutral-500: 80, 73, 69;       /* bg4 */
+  --color-neutral-600: 69, 64, 61;       /* bg3 */
+  --color-neutral-700: 50, 48, 47;       /* bg2 */
+  --color-neutral-800: 40, 40, 40;       /* bg0 */
+  --color-neutral-900: 27, 27, 27;       /* bg_dim */
+
+  /* Primary colors - Yellow/Gold accent */
+  --color-primary-50: 252, 230, 194;     /* yellow light variant */
+  --color-primary-100: 250, 223, 173;    /* yellow lighter */
+  --color-primary-200: 245, 209, 139;    /* yellow light */
+  --color-primary-300: 241, 194, 100;    /* yellow */
+  --color-primary-400: 233, 177, 67;     /* yellow (Fugu input) */
+  --color-primary-500: 229, 162, 30;     /* yellow darker */
+  --color-primary-600: 215, 153, 33;     /* bg_yellow */
+  --color-primary-700: 196, 137, 23;     /* yellow dark */
+  --color-primary-800: 159, 112, 19;     /* yellow darker */
+  --color-primary-900: 122, 86, 14;      /* yellow darkest */
+
+  /* Secondary colors - Orange/Warm tones */
+  --color-secondary-50: 248, 211, 184;   /* orange light variant */
+  --color-secondary-100: 244, 199, 161;  /* orange lighter */
+  --color-secondary-200: 240, 187, 138;  /* orange light */
+  --color-secondary-300: 236, 175, 115;  /* orange */
+  --color-secondary-400: 232, 163, 92;   /* orange medium */
+  --color-secondary-500: 226, 204, 169;  /* fg1 (Fugu input) */
+  --color-secondary-600: 216, 186, 138;  /* fg0 */
+  --color-secondary-700: 205, 168, 108;  /* orange (secondary tone) */
+  --color-secondary-800: 195, 150, 77;   /* orange darker */
+  --color-secondary-900: 173, 129, 58;   /* orange darkest */
+
+  /* Additional Gruvbox Material colors for UI elements */
+  --color-accent-red: 234, 105, 98;      /* red */
+  --color-accent-green: 169, 182, 101;   /* green */
+  --color-accent-blue: 125, 174, 163;    /* aqua */
+  --color-accent-aqua: 139, 187, 127;    /* aqua light variant */
+  --color-accent-purple: 211, 134, 155;  /* purple */
+  
+  /* Background colors */
+  --color-bg-dim: 27, 27, 27;
+  --color-bg0: 40, 40, 40;
+  --color-bg1: 50, 48, 47;
+  --color-bg2: 50, 48, 47;
+  --color-bg3: 69, 64, 61;
+  --color-bg4: 80, 73, 69;
+  
+  /* Foreground colors */
+  --color-fg0: 216, 186, 138;
+  --color-fg1: 226, 204, 169;
+}
+
+/* Apply dark mode by default */
+body {
+  background-color: rgb(var(--color-bg0));
+  color: rgb(var(--color-fg1));
+}
+
+/* Ensure proper contrast for links */
+a {
+  color: rgb(var(--color-primary-400));
+}
+
+a:hover {
+  color: rgb(var(--color-primary-300));
+}
+
+/* Code blocks styling */
+pre, code {
+  background-color: rgb(var(--color-bg1));
+  color: rgb(var(--color-fg0));
+}
+
+/* Selection colors */
+::selection {
+  background-color: rgb(var(--color-primary-700));
+  color: rgb(var(--color-fg1));
+}
+
+/* Fix navigation and icons to use fg1 color (#E2CCA9) instead of yellow */
+nav a,
+nav svg,
+.menu a,
+.menu svg,
+header a,
+header svg {
+  color: #e2cca9 !important;
+}
+
+/* Fix subtitle colors to use grey1 */
+.home .text-neutral,
+.home .text-neutral-400,
+.home .text-neutral-500,
+.profile-subtitle,
+[class*=subtitle] {
+  color: #928374 !important;
+}
+
+/* Collapsible code block summary text - Gruvbox yellow */
+details summary,
+.prose details summary {
+  color: rgb(var(--color-primary-400)) !important; /* #E9B143 - Gruvbox yellow */
+  font-weight: 600;
+}
+
+/* Style the summary element on hover */
+details summary:hover,
+.prose details summary:hover {
+  color: rgb(var(--color-primary-300)) !important; /* Lighter yellow on hover */
+  cursor: pointer;
 }
