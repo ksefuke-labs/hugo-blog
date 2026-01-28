@@ -26,4 +26,4 @@ I will be placing a bandcamp card at the end of each article, to give you insigh
 **Oblique Occasions - Anathema**
 
 The Pinnacle of Barber Beats Tunes
-{{< bandcamp album 4043507259 false big >}}
+{{< bandcamp album 4043507259 true >}}

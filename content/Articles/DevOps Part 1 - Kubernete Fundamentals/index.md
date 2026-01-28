@@ -921,5 +921,5 @@ The next steps are to actually setup projects! more on that here
 
 **Eagle Eyed Tiger & VIQ - Enough For Me**
 
-Perfect tune to have in the background driving home from work on a friday.
+Perfect tune to have in the background, while driving home from work on a friday.
 {{< bandcamp track 169734741 >}}

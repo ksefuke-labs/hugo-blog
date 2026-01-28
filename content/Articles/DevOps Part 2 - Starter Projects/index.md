@@ -460,5 +460,6 @@ Once again all of the code for these projects can be found on my Labs repo.
 
 **Amos Roddy - Citizen Sleeper 2 OST**
 
-The story and artstyle of this game already sucks you in, then the music comes in and you never want to leave.
+The story and artstyle of this game already suck you in. Then the music comes in, and makes you never want to leave (Speaking from experience).
+Personal Favorites: **A Different Sun**, **Little Sister**, **Senna's Rest**, **Another Cycle**, **Darkside**
 {{< bandcamp album 317475870 true >}}

@@ -61,7 +61,7 @@ Security: DevSecOps practices, Proofpoint Email Security, Vonahi vPentest, Rapid
 <ul>
 <li>Triaged tickets and calls – identified scope of issues and requests, providing expertise or escalating when required in line with SLAs</li>
 <li>Delivered technical support for Microsoft 365, Backups, Email Security, Active Directory, Citrix Workspace, RDP, Gamma Communications, Cisco Meraki, in addition to general hardware and software</li>
-<li>implemented Microsoft Power Automate flows and Intune deployment projects integrating peripheral devices with cloud-based appliances for improved customer workflows</li>
+<li>Implemented Microsoft Power Automate flows and Intune deployment projects integrating peripheral devices with cloud-based appliances for improved customer workflows</li>
 <li>Monitored, maintained and patched customer infrastructure</li>
 </ul>
 

@@ -16,16 +16,16 @@ This post details my home lab adventures so far and whats to come in the future.
 ---
 ## What started the spiral
 
-I've never been a fan of music streaming services like spotify as i prefer to own my music and have built up a quite a large collection over the years. I also didn't like the idea of storing personal files using cloud storage providers like google drive, Microsoft Onedrive and Apple Icloud. 
-A Synology Nas was an option but i really wanted to build something myself.
+I've never been a fan of music streaming services like spotify as I prefer to own my music and have built up a quite a large collection over the years. I also didn't like the idea of storing personal files using cloud storage providers like google drive, Microsoft Onedrive and Apple Icloud. 
+A Synology Nas was an option but I really wanted to build something myself.
 
 A spectacular video from German Youtuber "[Wolfgang's Channel](https://www.youtube.com/@WolfgangsChannel)" detailing the build process for a custom NAS sparked my [interest](https://www.youtube.com/watch?v=qACTvCW_yDc), i but was turned off due to my lack understanding of Linux at the time (2021).
-It wasn't until i deleted my windows install and fully migrated to Arch Linux back in 2022 that i decided to revisit the idea again.
+It wasn't until I deleted my windows install and fully migrated to Arch Linux back in 2022 that I decided to revisit the idea again.
 
 ---
 ## Objectives
 
-Me being the over thinker that i am wanted to identify all of my current requirements and take future requirements into consideration:
+Me being the over thinker that I am wanted to identify all of my current requirements and take future requirements into consideration:
 - All in one - Wanted to be able to host services in addition it being a NAS.
 - Quiet and power efficient - Server would live in my room, on my desk so it couldn't be loud.
 - Small - Ideally ITX form factor so it's not cumbersome to tinker with or store.
