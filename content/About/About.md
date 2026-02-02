@@ -2,7 +2,7 @@
 date = '2025-07-25T20:17:00Z'
 draft = false
 #title = 'About Me'
-layout = 'hero'
+layout = 'simple'
 +++
 
 ## About Me
@@ -13,8 +13,6 @@ I created this blog to document the technologies, tools, and ideas that I’m le
 I've always been a tinkerer, messing with Lego as child, to CAD and CNC software in Secondary School and College.
 I has some experience messing with the odd computer here and there throughout my childhood. However, it was only after building my first custom PC back in 2016 that considered pursuing IT as a career.
 Since then i've built several PC's, switched to Linux for everything, and built a homelab where I host my own services and experiment with new technologies in a hands on environment.
-
-![custom-pc1-1](custom-pc1-1.jpg)
 
 Outside of tech, I enjoy listening to music and playing the occasionally indie game.
 
