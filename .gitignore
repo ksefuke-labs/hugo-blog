@@ -1,15 +1,4 @@
-# GO Binary Mod
-go.mod
-.hugo_build.lock
 # Hugo Specific Exclusions
+.hugo_build.lock
 /public
 /resources
-
-# MacOS and VSCode
-/.vscode/
-.DS_Store
-
-# Node
-/node_modules/
-package-lock.json
-package.json

@@ -1,6 +1,6 @@
 +++
-draft = true
-title = 'Personal Projects'
+draft = false
+title = 'Portfolio'
 layout = 'simple'
 +++
 
@@ -15,7 +15,8 @@ These may be called "Projects" but they never have a true ending.
 
 
 ---
-
+## Labs
+The home for am i have tested or am currently testing. In addition 
 {{< github repo="ksefuke-labs/Labs" showThumbnail=false >}}
 
 

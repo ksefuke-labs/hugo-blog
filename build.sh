@@ -8,7 +8,7 @@ main() {
  echo "Installing Hugo v${HUGO_VERSION}...."
  curl -LJO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
  tar -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
- cp hugo /opt/buildhome
+ #cp hugo /opt/buildhome
  rm hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
 
  # Verify Installed versions
@@ -20,7 +20,7 @@ main() {
  # Clone themes Repo
  echo "Clone Blowfish"
  git submodule update --init --recursive
- git config core.quotepath false
+ #git config core.quotepath false
 
  # Building the website
  echo "Building the site"
