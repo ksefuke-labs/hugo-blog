@@ -212,5 +212,6 @@ As with CrowdSec, I would like to deploy Wazuh SIEM/XDR in a resilient, load-bal
 **Upusen - Highland Ave.**
 
 One of my favourite albums to listen to on late drives on the motorway.
-Personal Favorites: **Halogen Lights**, **INIT**, **Close**, **Delta**, **Escort**, **Celica**
+
+**Personal Favorites**: **Halogen Lights**, **INIT**, **Close**, **Delta**, **Escort**, **Celica**
 {{< bandcamp album 3677977837 >}}

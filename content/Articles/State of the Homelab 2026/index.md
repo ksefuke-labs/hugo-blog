@@ -311,5 +311,5 @@ I honestly haven't touched the 2 minisforum n100d mini pcs i bought them back in
 
 **Slowerpace - Learning Time**
 
-Reminds of those old school safari documentaries
+Reminds of those old school safari documentary intros.
 {{< bandcamp track 2716073771 >}}
