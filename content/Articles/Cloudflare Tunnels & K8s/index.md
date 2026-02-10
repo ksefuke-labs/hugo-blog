@@ -1,62 +1,57 @@
 +++
 date = '2026-01-20'
-#showDateUpdated =
-#showPagination =
-#showReadingTime =
-#showTableOfContents =
-#showWordCount =
 title = 'Cloudflare Tunnels & K8s'
-description = 'First time installing Arch Linux'
+description = 'Secure Kubernetes service exposure using Cloudflare Tunnels: deploy applications without exposing your public IP address.'
 draft = false
 +++
 
-This Article documents my kubernetes deployment of cloudflare tunnels to expose Linkding.
+This article documents my Kubernetes deployment of Cloudflare Tunnels to expose Linkding.
 
 ## Cloudflare Tunnels
-It goes without saying that exposing services via node port + opening adjacent ports of WAN is incredibly insecure.
-Even with my exposed Docker services I've used a DNAT rule to only forward http/https traffic on the WAN from IPs on a custom geoip whitelist to a reverse proxy in Homelab. 
+It goes without saying that exposing services via node port + opening adjacent ports on WAN is incredibly insecure.
+Even with my exposed Docker services, I've used a DNAT rule to only forward HTTP/HTTPS traffic on the WAN from IPs on a custom GeoIP whitelist to a reverse proxy in my homelab. 
 
-So these services are only accessible via subdomains. But even then my public IP is exposed.
-But there is a better way of exposing services to the internet, a way I've been aware about for a long time but have not tested until now.
+So these services are only accessible via subdomains. But even then, my public IP is exposed.
+But there is a better way of exposing services to the internet, a way I've been aware of for a long time but have not tested until now.
 
-[Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) provides a secure way to connect resources to Cloudflare without a publicly routable IP address. So traffic doesn't need to be sent to an external IP. It works by using a lightweight daemon (cloudflared) to establish outbound only connections referred to as tunnels between internal resources and Cloudflare's global network.
+[Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) provides a secure way to connect resources to Cloudflare without a publicly routable IP address. So traffic doesn't need to be sent to an external IP. It works by using a lightweight daemon (cloudflared) to establish outbound-only connections referred to as tunnels between internal resources and Cloudflare's global network.
 
-Tunnels are persistent objects that route traffic to DNS records, a single tunnel can contain as many cloudflared processes as required. And these processes will establish connections to Cloudflare and send traffic to the nearest Cloudflare datacenter.
+Tunnels are persistent objects that route traffic to DNS records. A single tunnel can contain as many cloudflared processes as required, and these processes will establish connections to Cloudflare and send traffic to the nearest Cloudflare data centre.
 
 ![cdft.png](cdft.png)
 ### Install and configuration
 https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/create-local-tunnel/
-Install cloudflared package on local machine
+Install cloudflared package on local machine:
 ```bash
 pacman -Syu cloudflared
 ```
-Authenticate cloudflared, the command will open a browser, prompt you to login into cloudflare and specify a hostname
-Once done it i will generate a json and cert.pem file. It also generate an ID which will needed later.
+Authenticate cloudflared. The command will open a browser, prompt you to log in to Cloudflare and specify a hostname.
+Once done, it will generate a json and cert.pem file. It also generates an ID which will be needed later.
 ```bash
 cloudflared tunnel login
 ```
 
-create a tunnel with the subdomain of the service.
+Create a tunnel with the subdomain of the service:
 ```bash
 cloudflared tunnel create ld # subdomain for linkding
 ```
 
-Create CNAME record specifying subdomain under name and {tunnel id}.cfargotunnel.com under target. With proxy status ticked.
+Create a CNAME record specifying the subdomain under name and {tunnel id}.cfargotunnel.com under target, with proxy status ticked:
 ```txt
 http://59c97568-9eda-4dbf-9857-b6cf9cf91259.cfargotunnel.com/
 ```
 
 ### Kubernetes setup
-The json file generated above contains credentials cloudflared will need to authenticate with cloudflare.
-The default k8s docs have deployment examples with hard-coded sensitive credentials, which is a no go.
+The json file generated above contains credentials cloudflared will need to authenticate with Cloudflare.
+The default K8s docs have deployment examples with hard-coded sensitive credentials, which is a no-go.
 
-Created a secret using "kubectl create secret generic" (example id below), created a secret volume and mounted it to the cloudflared container.
+Created a secret using "kubectl create secret generic" (example ID below), created a secret volume and mounted it to the cloudflared container:
 ```bash
 kubectl create secret generic tunnel-credentials \
 --from-file=credentials.json=59c97568-9eda-4dbf-9857-b6cf9cf91259.json
 ```
 {{< alert cardColor="#80AA9E" textColor="#1B1B1B" >}}
-**Note** - i am aware this method of using K8 generic secrets is not best practise as they are encoded, not encrypted so anyone with access to the cluster can decode them. 
+**Note** - I am aware this method of using K8s generic secrets is not best practice as they are encoded, not encrypted, so anyone with access to the cluster can decode them. 
 {{< /alert >}}
 
 **Cloudflare.yaml**
@@ -150,25 +145,20 @@ data:
 ```
 
 ## Closing Thoughts
-I think cloudflare Tunnels is a fantastic method of securely exposing services. But i would to like try a similar self hosted solution called [Pangolin](https://pangolin.net/). It requires a VPS, but has extensions like crowdsec IDS/IPS, SSO and 2FA to further control access to services. Its also self hosted....
+I think Cloudflare Tunnels is a fantastic method of securely exposing services. But I would like to try a similar self-hosted solution called [Pangolin](https://pangolin.net/). It requires a VPS, but has extensions like CrowdSec IDS/IPS, SSO and 2FA to further control access to apps.
 
-I still plan to use Cloudflare Tunnels for some services in the future.
-
-
-{{< alert cardColor="#80AA9E" textColor="#1B1B1B" >}}
-**Note** - cloudflared.yaml deployment placed in staging apps directory as it may be subject to changes.
-{{< /alert >}}
+I still plan to use Cloudflare Tunnels for some apps in the future.
 
 ---
 ## Beats to Listen to
 
 {{< alert cardColor="#DB4740" textColor="#1B1B1B" >}}
-**ALERT!** - Lower your volume, the embedded bandcamp player doesn't have volume controls and it's quite loud by default
+**ALERT!** - Lower your volume, the embedded Bandcamp player doesn't have volume controls and it's quite loud by default.
 {{< /alert >}}
 
 **Windows96 - Empty Hiding World**
 
-Windows96 is know for his racky tunes themed around Old School Windows Aesthetics. Defintely won't be many people's cup of tea. But i find his tunes quite charming.
+Windows96 is known for his funky tunes themed around old school Windows aesthetics. Definitely won't be many people's cup of tea, but I find his tunes quite charming.
 
-**Personal Favorites**: **Edenic Green Plus**, **Extreme Violet**, **Reason Why**, **Inwite**, **Continuing**
+**Personal Favourites**: **Edenic Green Plus**, **Extreme Violet**, **Reason Why**, **Inwite**, **Continuing**
 {{< bandcamp album 691588472 >}}

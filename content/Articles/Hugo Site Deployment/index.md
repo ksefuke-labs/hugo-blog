@@ -1,55 +1,56 @@
 +++
 date = '2026-01-06'
 title = 'Hugo Site Deployment'
-description = 'First time installing Arch Linux'
+description = 'Building and deploying a personal website with Hugo static site generator, Blowfish theme, and Cloudflare Workers serverless platform.'
 draft = false
 +++
 
-"This article details the process of building and deploying my personal website using Hugo, Blowfish theme, and Cloudflare Workers.”
+This article details the process of building and deploying my personal website using Hugo, Blowfish theme, and Cloudflare Workers.
 
-## Why setup a website
-The Idea of setting a website has been in the back of my mind for years, I have hundreds of obsidian notes laying around. Documenting ideas, interest and most importantly my suffering dealing with Linux and homelab shenanigans.
-What better way to showcase my progress, thought processes and learning than publicly available record of projects
+## Why set up a website
+The idea of setting up a website has been in the back of my mind for years. I have hundreds of Obsidian notes lying around, documenting ideas, interests and most importantly my suffering dealing with Linux and homelab shenanigans.
+What better way to showcase my progress, thought processes and learning than a publicly available portfolio.
+
 ## Why Hugo
-Since i am not well versed in programming languages yet i needed something simple to configure, deploy and that wouldn't become a blocker for future endeavours. Hugo is static site generator. It pre-builds websites into HTML/CSS/JS files, eliminating runtime attack surfaces, doesn't require a database or server-side execution so there is no risk from code injections,  and doesn't have admin interface to brute force. 
+Since I am not well versed in HTML, I needed something simple to configure and deploy. I choose Hugo, a static site generator that pre-builds websites into HTML/CSS/JS files, eliminating runtime attack surfaces, doesn't require a database or server-side execution so it's vulnerable to code injection, and doesn't have an admin interface to brute force. 
 
-All of these features make it convenient to build a website and not have to worry about security, unlike wordpress...
-Configuration of the site is done in toml and post are written in markdown. Making it very easy to convert my obsidian notes into articles.
+All of these features make it convenient to build a website and not have to stress about security, unlike with WordPress...
+Configuration of the site is done in TOML and posts are written in markdown, making it very easy to convert my Obsidian notes into articles.
 
 ## Local Development
-Hugo is deployed locally on my Arch Linux desktop using the official Hugo pacman package `extra/hugo 0.155.2-1`. I created a github repo to host all the code for the site.
+Hugo is deployed locally on my Cachy OS desktop using the official Hugo pacman package `extra/hugo 0.155.2-1`. I created a GitHub repo to host all the code for the site.
 
-Hugo Site is comprised of several directories:
-- Assets - Location for raw, unprocessed files i.e css color schemes, fonts, profile images
-- Config - Site configuration files
-- Content - Location of website content in markdown i.e homepage, about me, articles,
-- Layouts - HTML templates that define site structure
-- Public - Output directory of the final static website, generated upon initialising the hugo server.
-- Resources - Auto generated cache
-- Themes - Location of [pre made designs](https://themes.gohugo.io/) if applied. Hugo has an expansive list of community made themes, i decided on [Blowfish](https://blowfish.page/) due to it's versatility, frequent updates and extensive documentation. I also wanted to avoid spending time making a custom theme. Blowfish is added as a submodule to my git repo via:
+A Hugo site is comprised of several directories:
+- **Assets** - Location for raw, unprocessed files, i.e., CSS colour schemes, fonts, profile images
+- **Config** - Site configuration files
+- **Content** - Location of website content in markdown, i.e., homepage, about me, articles
+- **Layouts** - HTML templates that define site structure
+- **Public** - Output directory of the final static website, generated upon initialising the Hugo server
+- **Resources** - Auto-generated cache
+- **Themes** - Location of [pre-made designs](https://themes.gohugo.io/) if applied. Hugo has an expansive list of community-made themes. I decided on [Blowfish](https://blowfish.page/) due to its versatility, frequent updates and extensive documentation. I also wanted to avoid spending time making a custom theme. Blowfish is added as a submodule to my git repo via:
 ```
 git submodule add -b main https://github.com/nunocoracao/blowfish.git themes/blowfish
 ```
 
 {{< alert cardColor="#80AA9E" textColor="#1B1B1B" >}}
-**Note** - Public and Resources directories are included in the .gitignore file, it is unnecessary to store these files in the repo as the site will be built locally or via other means. More on this later.
+**Note** - Public and Resources directories are included in the .gitignore file. It is unnecessary to store these files in the repo as the site will either be built locally or via other means. More on this later.
 {{< /alert >}}
 
-Previewing the site locally is done via `hugo server --disableFastRender --noHTTPCache` which starts a local server without website caching and forces a a full site rebuild on every change.
+Previewing the site locally is done via `hugo server --disableFastRender --noHTTPCache`, which starts a local server without website caching and forces a full site rebuild on every change.
 
 ### Site Contents and Features
-Below is the site contents and features i use on my website
-Each content type is separated into there own directories for presentation reasons 
+Below are the site contents and features I use on my website.
+Each content type is separated into their own directories for presentation reasons:
 ```bash
 content
 ├── About # About Me Section (Single File)
 ├── Articles # Location of primary
 ├── _index.md # Markdown content for homepage
-├── Portfolio # Portfilio Section (Single File)
-└── Resume # Resume/CV (SIngle File, clone of actually resume)
+├── Portfolio # Portfolio Section (Single File)
+└── Resume # Resume/CV (Single File, clone of actual resume)
 ```
-#### Custom Color Scheme
-Blowfish provides support for generating a custom css color scheme with the Dev's offshoot project called [Fugu](https://github.com/nunocoracao/fugu). But the theme didn't turn out the way i wanted so use Claude.AI to modify the custom css to my liking. The theme i choose is gruvbox material - mix/medium by [Sainnhe](https://github.com/sainnhe/gruvbox-material). CSS file is placed in /assets/css/schemes of the root site directory to avoid overwriting files in the blowfish theme assets directory.
+#### Custom Colour Scheme
+Blowfish provides support for generating a custom CSS colour scheme with the dev's offshoot project called [Fugu](https://github.com/nunocoracao/fugu). But the theme didn't turn out the way I wanted, so I used Claude.AI to modify the custom CSS to my liking. The theme I chose is gruvbox material - mix/medium by [Sainnhe](https://github.com/sainnhe/gruvbox-material). The CSS file is placed in /assets/css/schemes of the root site directory to avoid overwriting files in the blowfish theme assets directory.
 
 ![gruvbox-material](gruvbox-material.png)
 
@@ -286,19 +287,19 @@ details summary:hover,
 </details>
 
 #### Shortcodes
-A [shortcode](https://gohugo.io/content-management/shortcodes/) is a [_template_](https://gohugo.io/quick-reference/glossary/#template) invoked within markup, they can be used with any content format such as markdown to insert elements such as videos, images, and social media embeds into your content. I'm pretty much only using the custom shortcodes provide by [blowfish](https://blowfish.page/docs/shortcodes/):
+A [shortcode](https://gohugo.io/content-management/shortcodes/) is a [_template_](https://gohugo.io/quick-reference/glossary/#template) invoked within markup. They can be used with any content format such as markdown to insert elements such as videos, images, and social media embeds into your content. I'm pretty much only using the custom shortcodes provided by [blowfish](https://blowfish.page/docs/shortcodes/):
 
-- [Alert ](https://blowfish.page/docs/shortcodes/#alert)- Outputs its contents as a stylised message box within an article. It used to draw attention to important information (Volume Warning)
-- [Carousel](https://blowfish.page/docs/shortcodes/#carousel) - Used to showcase multiple images in an interactive and visually slideshow. Used to save visual space for mobile readers
-- [Github Card](https://blowfish.page/docs/shortcodes/#github-card) - Used to link github repositories without or with repo thumbnails
-- [Tabs](https://blowfish.page/docs/shortcodes/#tabs) - Used to present different variants of a particular step. Debating it's use as Tabs Heading are easy to miss with current color scheme.
-- [Timeline](https://blowfish.page/docs/shortcodes/#timeline) - A visual timeline that it's currently used in my resume showcase
-- [TypeIt ](https://blowfish.page/docs/shortcodes/#typeit)- JavaScript tool for creating typewriter effects, used to type out the silly quotes on my homepage
+- [Alert](https://blowfish.page/docs/shortcodes/#alert) - Outputs its contents as a stylised message box within an article. It's used to draw attention to important information (Volume Warning)
+- [Carousel](https://blowfish.page/docs/shortcodes/#carousel) - Used to showcase multiple images in an interactive and visual slideshow. Used to save visual space for mobile readers
+- [Github Card](https://blowfish.page/docs/shortcodes/#github-card) - Used to link GitHub repositories with or without repo thumbnails
+- [Tabs](https://blowfish.page/docs/shortcodes/#tabs) - Used to present different variants of a particular step. Debating its use as tab headings are easy to miss with the current colour scheme
+- [Timeline](https://blowfish.page/docs/shortcodes/#timeline) - A visual timeline that's currently used in my resume showcase
+- [TypeIt](https://blowfish.page/docs/shortcodes/#typeit) - JavaScript tool for creating typewriter effects, used to type out the silly quotes on my homepage
 
 #### Custom Bandcamp Shortcode
-I also created a custom shortcode for embedding bandcamp albums/tracks cards by modifying a custom spotify shortcode created by [Darthagnon](https://github.com/Darthagnon/darths-hugo-shortcodes/blob/master/layouts/shortcodes/spotify.html) with Claude.ai. 
+I also created a custom shortcode for embedding Bandcamp albums/tracks cards by using Claude.ai to modify a custom Spotify shortcode created by [Darthagnon](https://github.com/Darthagnon/darths-hugo-shortcodes/blob/master/layouts/shortcodes/spotify.html).
 
-The HTML file is placed in /layouts/shortcodes/ directory of the root site to avoid having to overwrite the contents of the same directory inside the blowfish theme folder.
+The HTML file is placed in the /layouts/shortcodes/ root site directory to avoid having to overwrite the contents of the same directory inside the blowfish theme folder.
 
 <details>
 
@@ -382,22 +383,22 @@ Warning: By embedding a Bandcamp player, you agree to Bandcamp's Terms of Servic
 </details>
 
 {{< alert cardColor="#DB4740" textColor="#1B1B1B" >}}
-**Disclaimer!** - I only used Claude.ai to create the bandcamp shortcode html and gruvbox material css files for this project. I will rewrite them properly at some point in the future.
+**Disclaimer!** - I only used Claude.ai to create the Bandcamp shortcode HTML and gruvbox material CSS files for this project. I will rewrite them properly at some point in the future.
 {{< /alert >}}
 
 ---
 
 ## Production Deployment
-To make the site publicly available, i could have chosen a docker image from [hugomods](https://hugomods.com/) and deployed it behind nginx proxy manager on my existing Dockerhost Virtual Machine.
-However I decided to try Cloudflare worker instead, i am in the process of migrating my homelab stack to kubernetes and wanted to guarantee my website is always online.
+To make the site publicly available, I could have chosen a Docker image from [hugomods](https://hugomods.com/) and deployed it behind nginx proxy manager on my existing Dockerhost Virtual Machine.
+However, I decided to try Cloudflare Workers instead. I am in the process of migrating my homelab stack to Kubernetes and wanted to guarantee my website is always online.
 
-[Cloudflare workers](https://developers.cloudflare.com/workers/) is a serverless platform for building, deploying and scaling apps across Cloudflare's global network. I chose it over github pages as i already use cloudflare for all my domains and domain related API services (Dynamic DNS and Let's Encrypt DNS validation). It has native support for static website like hugo
+[Cloudflare Workers](https://developers.cloudflare.com/workers/) is a serverless platform for building, deploying and scaling apps across Cloudflare's global network. I chose it over GitHub Pages as I already use Cloudflare for all my domains and domain-related API services (Dynamic DNS and Let's Encrypt DNS validation). It has native support for static websites like Hugo.
 
 #### Build Process
-The Workers application menu allows you to connect your github account to select a repository to pull code from, once a repo is selected you will presented with the menu below
+The Workers deployment menu allows you to connect your GitHub account to select a repository to pull code from. Once a repo is selected, you will be presented with the menu below:
 ![cdfw-deploy.png](cdfw-deploy.png)
 
-[Wrangler](https://developers.cloudflare.com/workers/wrangler/) is Cloudflare's Developer Platform Cli which allows you manage worker projects. `npx wrangler deploy` is the default deploy command, it's needs config file with build instructions.
+[Wrangler](https://developers.cloudflare.com/workers/wrangler/) is Cloudflare's Developer Platform CLI, which allows you to manage worker projects. `npx wrangler deploy` is the default deploy command; it needs a config file with build instructions.
 
 **Wrangler.toml**
 ```toml
@@ -413,10 +414,10 @@ not_found_handling = "404-page"
 ```
 
 The bash script below:
-- Downloads and extract a specific hugo binary version $HUGO_VERSION
-- Updates and initialises blowfish theme submodule
-- Builds the site with minimises HTML, CSS, JSON, JS and XML outputs. Reducing there file sizes.
-- Configures error handling for the script, making it exit if any command fails and if unset variables are present within the script entire pipeline
+- Downloads and extracts a specific Hugo binary version $HUGO_VERSION
+- Updates and initialises the blowfish theme submodule
+- Builds the site with minimised HTML, CSS, JSON, JS and XML outputs, reducing their file sizes
+- Configures error handling for the script, making it exit if any command fails and if unset variables are present within the script's entire pipeline
 
 **build.sh**
 
@@ -453,7 +454,7 @@ set -euo pipefail
 main "$@"
 ```
 
-Once deployment is started, cloudflare displays real-time build logs for troubleshooting, legacy build logs from previous commits and provides a settings section to specify a custom domain.
+Once deployment is started, Cloudflare displays real-time build logs for troubleshooting, legacy build logs from previous commits and provides a settings section to specify a custom domain.
 
 ![cdfw-logs.png](cdfw-logs.png)
 ![cdfw-commits.png](cdfw-commits.png)
@@ -462,25 +463,24 @@ Once deployment is started, cloudflare displays real-time build logs for trouble
 ---
 
 ## Future Additions/Plans
-This project has been a great learning experience in static site generation and serverless deployment. And it’s just the beginning, I plan to make the following amendments at some point:
-- Custom Logo
-- Custom Site Fonts and icons
+This project has been a great learning experience in static site generation and serverless deployments. And it's just the beginning. I plan to make the following amendments at some point:
+- Better Music Choice Explantions
+- Custom Site Fonts and Icons
 - Gruvbox Syntax Highlighting
-- Improve wrangler build script
-- Inclusion of other languages
+- Improve Wrangler Build Script
+- Inclusion of Other Languages
 - Rewrite of Custom Bandcamp Shortcode
-- Rewrite of Gruvbox Material color scheme
-
+- Rewrite of Gruvbox Material Colour Scheme
 
 
 ---
 ## Beats to Listen to
 
 {{< alert cardColor="#DB4740" textColor="#1B1B1B" >}}
-**ALERT!** - Lower your volume, the embedded bandcamp player doesn't have volume controls and it's quite loud by default
+**ALERT!** - Lower your volume, the embedded Bandcamp player doesn't have volume controls and it's quite loud by default.
 {{< /alert >}}
 
 **Snail's House - Lumi**
 
-Personal Favorites: **Gemini**, **Lumiukko**, **Frostbite**
+Personal Favourites: **Gemini**, **Lumiukko**, **Frostbite**
 {{< bandcamp album 879883165 >}}

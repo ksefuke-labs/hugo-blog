@@ -56,7 +56,7 @@ users:
     user:
       client-certificate: /path/to/prod-admin.crt
       client-key: /path/to/prod-admin.key
-  
+
   - name: minikube-user
     user:
       client-certificate: /home/user/.minikube/profiles/minikube/client.crt

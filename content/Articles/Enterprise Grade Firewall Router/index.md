@@ -1,16 +1,16 @@
 +++
 date = '2026-01-26'
 title = 'Enterprise Grade Firewall Router'
-#description = 'First time installing Arch Linux'
+description = 'Building a custom OPNsense firewall router with VLANs, CrowdSec IPS/IDS, and 2.5GbE networking for enterprise-grade home network security.'
 draft = false
 +++
 
-A homelab isn't complete without a firewall router. This article documents my journey deploying a enterprise grade firewall router for home network.
+A homelab isn't complete without a firewall router. This article documents my journey deploying an enterprise-grade firewall router for my home network.
 
 ---
 ## The Problem
 
-Once I started experimenting with Proxmox, OpenMediaVault and Docker services back in 2023, I began to notice the limitations of my router. Even with an aftermarket solution such as the [TP-Link AC2100](https://www.tp-link.com/uk/home-networking/dsl-modem-router/archer-vr2100/), issues keeping arising:
+Once I started experimenting with Proxmox, OpenMediaVault and Docker services back in 2023, I began to notice the limitations of my router. Even with an aftermarket solution such as the [TP-Link AC2100](https://www.tp-link.com/uk/home-networking/dsl-modem-router/archer-vr2100/), issues kept arising:
 
 - Limited firewall settings besides basic port forwarding
 - Only one LAN network range with no VLAN support – so servers, client devices and IoT devices would all be on the same network
@@ -23,7 +23,7 @@ I needed a solution that met the following requirements:
 - **Extremely configurable** – A solution that grows to meet my needs as they increase
 - **Free and open source** – No vendor lock-in and forced subscriptions
 - **Network segmentation** – VLANs and advanced firewall rule support for traffic isolation
-- **DNS control** – full DHCP/DNS configuration including custom DNS servers and content filtering support
+- **DNS control** – Full DHCP/DNS configuration including custom DNS servers and content filtering support
 - **Traffic visibility** – Deep packet inspection, logging, and monitoring tools
 - **Extensive plugin support** – To provide additional functionality
 - **Support for consumer-grade hardware** – Cheap and accessible to get into, doesn't require expensive proprietary hardware
@@ -72,15 +72,15 @@ Whereas the [Topton firewall router](https://www.aliexpress.com/item/10050039905
 
 The final push were ServeTheHome's [articles](https://www.servethehome.com/new-fanless-4x-2-5gbe-intel-n5105-i226-v-firewall-tested/) and [videos](https://youtu.be/xExmvIHEQao) on these specific models, detailing BIOS features, schematics and performance, removing any concerns about the unit's quality and consistency. I did opt for the barebone model so I could purchase more reliable RAM and storage though:
 
-**RAM**: 1 × 16GB Corsair Vengeance SODIMM 16GB DDR4 2666MHz CL18 Memory  
-**Storage**: 2 × SK hynix Gold P31 500GB M.2 NVMe SSDs
+**RAM**: 1 × [16GB Corsair Vengeance SODIMM 16GB DDR4 2666MHz CL18 Memory](https://www.corsair.com/uk/en/p/memory/cmsx16gx4m2a2666c18/vengeancea-series-16gb-2x8gb-ddr4-sodimm-2666mhz-cl18-memory-kit-cmsx16gx4m2a2666c18)  
+**Storage**: 2 × [SK hynix Gold P31 500GB M.2 NVMe SSDs](https://ssd.skhynix.com/gold_p31/)
 
 
 ![router1](router1.png)
 ![router2](router2.png)
 #### Hosting on old/used hardware?
 
-This is a very valid method of hosting OPNsense. I do have an old B150i motherboard and an Intel i5-6400 lying around, but I wanted something feature-complete, so I didn't have to purchase additional components, i.e. case, power supply, PCIe add-on cards.
+This is a very valid method of hosting OPNsense. I do have an old B150i motherboard and an Intel i5-6400 lying around, but I wanted something feature-complete, so I didn't have to purchase additional components, i.e., case, power supply, PCIe add-on cards.
 
 #### OPNsense as a virtual machine?
 
@@ -95,7 +95,7 @@ I repurposed my [TP-Link AC2100](https://www.tp-link.com/uk/home-networking/dsl-
 ![tplink](tplink.png)
 
 ### Network cabinet
-At the end of 2024 i purchased this [Orion WM1 Wall Mounted Cabinet](https://www.rackcabinets.co.uk/products/wm1-wall-mounted-cabinet?variant=55376318071157) to house my homelab servers and networking equipment.
+At the end of 2024, I purchased this [Orion WM1 Wall Mounted Cabinet](https://www.rackcabinets.co.uk/products/wm1-wall-mounted-cabinet?variant=55376318071157) to house my homelab servers and networking equipment.
 ![tplink](server-switch-2025.jpg)
 
 ---
@@ -105,7 +105,7 @@ At the end of 2024 i purchased this [Orion WM1 Wall Mounted Cabinet](https://www
 - **LAN 1 (Management)** – Management interface; my desktop PC runs on this network. SSH to router is enabled via passwordless login only. Web GUI is accessible and devices on this network can interact with all devices on other networks. Also functions as a trunk port to MikroTik switch for VLAN 100 (Homelab)
 - **LAN 2 (Family)** – Network running all IoT/client devices and access point for the Wi-Fi (TP-Link doesn't have support for VLAN trunking). Web GUI is accessible for emergency reasons, but access to other networks is heavily restricted
 - **VLAN 100 (Homelab)** – Network for my homelab; global access is restricted to LAN 1, with devices in LAN 2 only having access to hosted services via HTTPS on my reverse proxy
-- **WAN (PPPoE/DHCP)** – Connected to BT ISP via PPPoE, was running behind DHCP of previous router during development. No inbound ports opened excluding DNAT rule for HTTP/HTTPS traffic to reverse proxy. Private networks, bogon networks, SSH and Web GUI access are completely blocked on this interface.
+- **WAN (PPPoE/DHCP)** – Connected to BT ISP via PPPoE, was running behind DHCP of previous router during development. No inbound ports opened excluding DNAT rule for HTTP/HTTPS traffic to reverse proxy. Private networks, bogon networks, SSH and Web GUI access are completely blocked on this interface
 
 I decided on this topology for its stability and simplicity. I'm still living at home and if the "Wi-Fi" stops working for any reason, I will be blamed. And having too many VLANs would complicate maintenance.
 
@@ -116,7 +116,7 @@ All the services deployed on OPNsense to manage and secure my network.
 
 ### CrowdSec IDS/IPS
 
-[CrowdSec](https://www.crowdsec.net/) is an open-source and collaborative security solution offering crowdsourced server detection and protection against malicious IPs. The IDS aspect works by parsing application/appliance logs against specific scenarios such as web GUI and SSH brute-forcing and aggressive port scanning attempts for OPNsense. IPs that trigger these scenarios are banned using a remediation component, i.e. firewall bouncer, which is the IPS aspect of the solution.
+[CrowdSec](https://www.crowdsec.net/) is an open-source and collaborative security solution offering crowdsourced threat detection and protection against malicious IPs. The IDS aspect works by parsing application/appliance logs against specific scenarios such as web GUI and SSH brute-forcing and aggressive port scanning attempts for OPNsense. IPs that trigger these scenarios are banned using a remediation component, i.e., firewall bouncer, which is the IPS aspect of the solution.
 
 Malicious IPs are shared with the CrowdSec community and added to a [community blocklist](https://doc.crowdsec.net/docs/next/central_api/community_blocklist/), which is automatically deployed as IPv4/IPv6 firewall aliases and rules on OPNsense, blocking inbound and outbound traffic to those IPs on all interfaces, with options to integrate additional [blocklists](https://app.crowdsec.net/blocklists) into the aliases.
 
@@ -137,7 +137,7 @@ I have created an allowlist of specific GeoIP aliases attached to a DNAT rule to
 [Q-Feeds](https://qfeeds.com/) is a cyber threat intelligence platform that delivers actionable threat feeds – IPs, domains, URLs, and other indicators of compromise – curated from thousands of sources and updated frequently.
 It collects threat data (OSINT + commercial sources) and turns it into structured threat feeds, which are designed to be directly ingested by firewalls, SIEMs, and other security infrastructure. 
 
-This is provisioned via the [OPNsense Q-Feeds connector plugin](https://docs.opnsense.org/manual/qfeeds.html) and free api key from Q-Feeds, which creates a firewall alias and is deployed as rules in the same manners as crowdsec blocklist. Reducing the amount of threats hitting the firewall.
+This is provisioned via the [OPNsense Q-Feeds connector plugin](https://docs.opnsense.org/manual/qfeeds.html) and a free API key from Q-Feeds, which creates a firewall alias and is deployed as rules in the same manner as the CrowdSec blocklist, reducing the amount of threats hitting the firewall.
 
 ### Tailscale
 
@@ -148,8 +148,7 @@ This is deployed on the firewall router as an exit node, allowing me to route tr
 
 The default DNS server. [Unbound](https://docs.opnsense.org/manual/unbound.html#unbound-dns) is a recursive DNS resolver which provides more secure and authoritative DNS lookups via the root name server; it caches queries locally to improve performance for known domains. It is configured to register DHCP leases and static mappings, with DNS over TLS deployed via Mullvad and Quad9 to encrypt DNS traffic. 
 
-In addition to DNS blocklists (DNSBLs) [Hagezi Multi PRO++](https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#orange_book-multi-pro---maximum-protection-), [threat intelligence feeds](https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#tif), [Dynamic DNS Blocking](https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#tif) and [Badware Hoster](https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#hoster) being deployed to block ads, tracker, telemetry and malicious domains. Unbound DNS
-also support host overrides, which i use to forward traffic from my subdomains to my reverse proxy without editting my `/etc/hosts` file on my pc.
+In addition to DNS blocklists (DNSBLs) [Hagezi Multi PRO++](https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#orange_book-multi-pro---maximum-protection-), [threat intelligence feeds](https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#tif), [Dynamic DNS Blocking](https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#tif) and [Badware Hoster](https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#hoster) are deployed to block ads, trackers, telemetry and malicious domains. Unbound DNS also supports host overrides, which I use to forward traffic from my subdomains to my reverse proxy without editing my `/etc/hosts` file on my PC.
 
 ---
 ## Future plans
@@ -165,7 +164,7 @@ There are cheaper options on the market such as the [SODOLA 9-Port 2.5Gb Switch]
 
 ### CrowdSec LAPI migration to Kubernetes cluster
 
-This installation of CrowdSec is running separately from the install on my dockerhost VM. I plan to disable the local API server component on the router and have it parse its logs to a resilient, load-balanced crowdsec deployment on my Kubernetes cluster.
+This installation of CrowdSec is running separately from the install on my dockerhost VM. I plan to disable the local API server component on the router and have it parse its logs to a resilient, load-balanced CrowdSec deployment on my Kubernetes cluster.
 
 ![cscli-lapi](cscli-lapi.png)
 
@@ -206,12 +205,12 @@ As with CrowdSec, I would like to deploy Wazuh SIEM/XDR in a resilient, load-bal
 ## Beats to Listen to
 
 {{< alert cardColor="#DB4740" textColor="#1B1B1B" >}}
-**ALERT!** - Lower your volume, the embedded bandcamp player doesn't have volume controls and it's quite loud by default
+**ALERT!** - Lower your volume, the embedded Bandcamp player doesn't have volume controls and it's quite loud by default.
 {{< /alert >}}
 
 **Upusen - Highland Ave.**
 
 One of my favourite albums to listen to on late drives on the motorway.
 
-**Personal Favorites**: **Halogen Lights**, **INIT**, **Close**, **Delta**, **Escort**, **Celica**
+**Personal Favourites**: **Halogen Lights**, **INIT**, **Close**, **Delta**, **Escort**, **Celica**
 {{< bandcamp album 3677977837 >}}
