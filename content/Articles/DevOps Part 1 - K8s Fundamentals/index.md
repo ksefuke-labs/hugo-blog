@@ -1,10 +1,10 @@
 +++
 date = '2025-12-25T20:27:30Z'
-title = 'DevOps Part 1 - Dive into Kubernetes'
+title = 'DevOps Part 1 - K8s Fundamentals'
 draft = false
 +++
 This article outlines my understanding of kubernetes fundamentals and principles as they arise, i'm likely to update this article over time as my knowledge grows.
-The contents of this article will also be available under my labs repo https://github.com/ksefuke-labs/Labs/tree/main/kubernetes-fundamentals/
+
 
 ---
 ## Control Plane
@@ -15,6 +15,9 @@ The control plane is the brain of a kubernetes cluster. It's a collection of com
 - Exposing the Kubernetes API
 - Handling authentication and authorisation
 ---
+### ETCD
+[ETCD](https://kubernetes.io/docs/concepts/architecture/#etcd) is a consistent and highly-available key value store used as Kubernetes' backing store for all cluster data.
+
 ### API Server
 An API Server functions as the front door for the control plane and is responsible for the following:
 - Serving as the Kubernetes REST API on port 6443 (HTTPS)

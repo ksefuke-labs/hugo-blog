@@ -15,18 +15,17 @@ These may be called "Projects" but they never have a true ending.
 
 
 ---
-## Labs
-The home for am i have tested or am currently testing. In addition 
-{{< github repo="ksefuke-labs/Labs" showThumbnail=false >}}
+## Kubernetes Homelab
+My kubernetes homelab managed entirely with GitOps and Flux CD. Deployed to local K3s CLuster. Migration to Talos Linux in progress
+{{< github repo="ksefuke-labs/kubernetes-homelab" showThumbnail=false >}}
 
 
-
-
-
+## Serverless Hugo Deployment
+Deployment of this very website. Managed in a GitOps pipeline with Cloudflare worker
+Details Available here 
 {{< github repo="ksefuke-labs/hugo-blog" showThumbnail=false >}}
 
+##
 
 
 
-
-{{< github repo="ksefuke-labs/kubernetes-homelab" showThumbnail=false >}}

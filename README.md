@@ -1,1 +1,1 @@
-My Website Project based on https://gohugo.io/ and https://blowfish.page
+My website based on Hugo. Deployed in a GitOps Pipeline with Cloudflare Workers 
