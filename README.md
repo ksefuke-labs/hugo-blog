@@ -1,1 +1,1 @@
-My website based on Hugo. Deployed in a GitOps Pipeline with Cloudflare Workers 
+My website based on Hugo and the Blowfish theme. Deployed in a GitOps Pipeline with Cloudflare Workers.
