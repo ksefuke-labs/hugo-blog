@@ -1,6 +1,6 @@
 +++
 date = '2025-12-27'
-title = 'DevOps Part 2 - Starter Projects'
+title = 'Kubernetes Practise Deployments'
 description = 'Hands-on guide to deploying Kubernetes applications: from Mealie and Linkding to monitoring with Prometheus and Grafana on Rancher Desktop.'
 draft = false
 +++

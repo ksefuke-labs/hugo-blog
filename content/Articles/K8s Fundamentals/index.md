@@ -1,6 +1,6 @@
 +++
 date = '2025-12-25T20:27:30Z'
-title = 'DevOps Part 1 - K8s Fundamentals'
+title = 'Kubernetes Fundamentals'
 draft = false
 +++
 This article outlines my understanding of kubernetes fundamentals and principles as they arise, i'm likely to update this article over time as my knowledge grows.
