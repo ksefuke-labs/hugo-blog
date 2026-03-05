@@ -62,15 +62,25 @@ I do have experience supporting VMware infrastructure in my MSP Cloud Analyst ro
 - Free Edition completely dropped in 2024 accompanied by significant licensing changes which burned a lot of companies' wallets
 
 ---
+
+## Choice of GPU
+A homelab doesn't need a GPU, but iT can be very beneficial for accelerating workloads such as transcoding music or CCTV footage.
+I imagine most people would default to using NVIDIA gpu's in their homelabs, especially now with their Performance in self hosted AI tools. However I opted for Intel IGPUs instead.
+
+While no where near as performant as discrete GPUs, they are exceptionally power efficient and come built into Intel CPUs, freeing up the pcie expansion slots for other add on cards like as HBA card for example.
+
+---
 ## Choice of NAS
 [OpenMediaVault](https://www.openmediavault.org/) was my go-to NAS option at the time. It's based on Debian under the hood and provided all required services ([Hdparm](https://wiki.archlinux.org/title/Hdparm), NFS, Rsync, SSH, S.M.A.R.T, SMB) out of the box or via [plugins](https://wiki.omv-extras.org/doku.php?id=start) (ZFS Support).
 
-**Note** - I will admit the initial configuration of services and disks can be quite tedious due to the config confirmation nature of OMV. Every change needs to be confirmed/applied and it's in your best interest not to commit multiple changes at once, as a config error may force you to revert them (speaking from experience).
+{{< alert cardColor="#80AA9E" textColor="#1B1B1B" >}}
+**Note** - The initial configuration of services and disks can be quite tedious. As every change needs to be confirmed/applied in the GUI and it's in your best interest not to commit multiple changes at once, as a config error may force you to revert them (speaking from experience).
+{{< /alert >}}
 
 
 There were other DIY solutions at the time, but these didn't meet my requirements for a number of reasons:
 - [Ubuntu Server](https://ubuntu.com/download/server) - I wasn't comfortable manually configuring all backend services at the time and wanted something that just worked so I could start tinkering with services. There are GUI apps such as Red Hat's [Cockpit](https://cockpit-project.org/) and [Webmin](https://webmin.com/) which can be installed on Ubuntu Server, but I found those to be a bit finicky. Obviously now I am aware the CLI is the superior way due to things like scripting and automation.
-- [Unraid](https://account.unraid.net/buy) - Requires a licence to use after 30 days. It was also way too web GUI-oriented for my liking. **Note** - There is a fork of Unraid's open-source `md_unraid` kernel driver called [non-raid](https://github.com/qvr/nonraid).
+- [Unraid](https://account.unraid.net/buy) - Requires a licence to use after 30 days. It was also way too web GUI-oriented for my liking.
 - [TrueNAS](https://www.truenas.com/truenas-community-edition/)' ZFS is a fantastic filesystem, but it requires all the drives to be spun up all the time (see this [post](https://forums.truenas.com/t/hdd-sleep-spindown-standby/13325/120)🙃) which increases power usage by 20W-30W, in addition to requiring purchasing drives in sets to expand available storage depending on the RAID setup.
 
 ### Filesystems 
@@ -302,6 +312,9 @@ Running a NAS as a virtual machine has proven to be quite stable and flexible. B
 
 **Kubernetes on spare mini PCs**
 I honestly haven't touched the 2 Minisforum N100D mini PCs I bought back in June besides installing Proxmox on them. I bought them with the initial idea of clustering them and messing with ZFS/Ceph replication. But I decided against it as I didn't have enough services to warrant spreading them out. Now with my migration to Kubernetes from Docker underway, I plan to install K3s or Talos Linux on them directly and cluster them.
+
+**Experimenting with SRIOV support for Intel IGPUs**
+The current way the intel IGPU is passed through to my dockerhost means it is unavailable to the host and other virtual machines. In addition preventing the connection of a physical display to the PVE host. To fix this I would like to tinker [Intel I915 SRIOV DKMS](https://github.com/strongtz/i915-sriov-dkms), which can split the IGPU into multiple virtual GPUs while leaving the iGPU availlable to the PVE host. Allowing the iGPU to be used in multiple virtual machine.
 
 ---
 ## Beats to Listen to

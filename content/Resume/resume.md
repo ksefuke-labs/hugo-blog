@@ -7,23 +7,23 @@ layout = 'simple'
 
 
 ## PROFESSIONAL OVERVIEW
-Junior DevOps Engineer with hands-on experience operating and securing cloud and hybrid infrastructure in MSP environments. Remediated vulnerability and penetration test findings across Microsoft 365, Entra ID, and Linux systems, while automating operational workflows and infrastructure tasks. Built and operate production-style Kubernetes and GitOps platforms through homelabs, with a strong foundation in Linux, networking, and infrastructure-as-code.
+Junior DevOps Engineer with hands-on experience operating and securing cloud and hybrid infrastructure in MSP environments. Remediated vulnerability and penetration test findings across Microsoft 365, Entra ID, and Linux systems, while automating operational workflows and infrastructure tasks. Built and maintain a production Kubernetes cluster and GitOps platforms through homelab, with a strong foundation in Linux, networking, and infrastructure-as-code.
 
+---
 ## TECHNICAL SKILLS
-Programming: Bash, YAML
+- **Cloud Platforms**: Microsoft Azure
+- **Container Orchestration**: Docker, Helm, Kubernetes
+- **Infrastructure as Code**: Ansible, Terraform, YAML
+- **GitOps**: Flux CD, Git workflows
+- **Observability**: Grafana, Prometheus
+- **Operating Systems**: Arch Linux, Almalinux, Debian, FreeBSD (OPNsense), Proxmox, Ubuntu, Windows Server
+- **Security**: DevSecOps practices, Proofpoint Email Security, Vonahi vPentest, Rapidfire Vulscan, Webroot, Heimdall, Crowdsec IDS/IP
 
-GitOps: Flux, Git workflows
+---
+## Projects
+See [Portfolio](https://www.ksefuke-labs.com/portfolio) for record of projects
 
-Backup and Disaster Recovery: Synology NAS, Veeam
-
-Monitoring: Prometheus, Grafana
-
-Orchestration: Docker, Helm, Kubernetes
-
-Operating Systems: Arch Linux, Almalinux, Debian, FreeBSD (OPNsense), Proxmox, Ubuntu, Windows Server
-
-Security: DevSecOps practices, Proofpoint Email Security, Vonahi vPentest, Rapidfire Vulscan, Webroot, Heimdall, Crowdsec IDS/IPS
-
+---
 ## WORK EXPERIENCE
 
 {{< timeline >}}
@@ -78,7 +78,7 @@ Security: DevSecOps practices, Proofpoint Email Security, Vonahi vPentest, Rapid
 
 {{< /timeline >}}
 
-
+---
 ## EDUCATION & CERTIFICATIONS
 
 BTEC L3 Informational Communications Technician (Merit) | QA Apprenticeship | 2024

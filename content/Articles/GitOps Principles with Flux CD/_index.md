@@ -240,7 +240,7 @@ ls -la ../../../base/monitoring/kube-prometheus-stack | tree
 
 ## GitOps Managed Project
 
-I've deployed [Audiobookshelf](https://www.audiobookshelf.org/)to my K3s Cluster entirely via GitOps. Audiobookshelf is an open-source self-hosted media server for your audiobooks and podcasts. Objectives are as follows:
+I've deployed [Audiobookshelf](https://www.audiobookshelf.org/) to my K3s Cluster entirely via GitOps. Audiobookshelf is an open-source self-hosted media server for your audiobooks and podcasts. Objectives are as follows:
 - Application should run on port 3005, configured via `ConfigMap`
 - Have a cluster IP service using port 3005
 - Utilise persistent storage
