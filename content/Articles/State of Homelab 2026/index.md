@@ -86,21 +86,21 @@ There were other DIY solutions at the time, but these didn't meet my requirement
 ### Filesystems 
 I deployed XFS on my high-capacity NAS hard drives and ZFS on Proxmox boot and VM SSDs, in addition to the NAS SSDs, alongside Mergerfs and Snapraid to combine drive directories.
 
-#### [ZFS](https://wiki.archlinux.org/title/ZFS)
+#### ZFS
 ZFS's copy-on-write design reduces write amplification on SSDs. Its ARC/L2ARC caching, built-in LZ4 compression, and checksumming provide excellent performance and data integrity. TRIM support maintains long-term SSD health.
 
 **Origin:** Created by Sun Microsystems (2005) for Solaris to solve enterprise data integrity and scalability issues. Now maintained as OpenZFS after Oracle's acquisition.
 
 **Enterprise use:** Widely deployed by financial institutions, cloud providers (Netflix), and media companies for databases, VM storage, and mission-critical data requiring snapshots and self-healing.
 
-#### [XFS](https://wiki.archlinux.org/title/XFS)
+#### XFS
 XFS's allocation group architecture enables parallel access across large HDDs, minimising seek time bottlenecks. Extent-based allocation and delayed writes optimise layout for multi-terabyte files. B-tree directories and online growth make it ideal for massive filesystems.
 
 **Origin:** Developed by SGI (1993) for IRIX to handle extreme demands of 3D graphics and supercomputing. Open-sourced in 2001, became RHEL's default filesystem in 2014.
 
 **Enterprise use:** Standard for scientific computing (CERN), video production studios, backup systems, and cloud object storage backends where large HDDs (10TB+) provide cost-effective cold storage.
 
-#### [Mergerfs](https://github.com/trapexit/mergerfs)
+#### Mergerfs
 Developed by Antonio SJ Musumeci (trapexit) under ISC licence. Evolved from earlier union filesystems like unionfs and mhddfs to address home storage needs. Used by the Perfect Media Server community, self-hosters, small businesses, and content creators managing large media libraries with mixed drive sizes.
 
 - Logically merges multiple drives into single mount point without striping data
@@ -114,7 +114,7 @@ Developed by Antonio SJ Musumeci (trapexit) under ISC licence. Evolved from earl
 ```
 ![mergerfs](mergerfs.png)
 
-#### [Snapraid](https://www.snapraid.it/)
+#### Snapraid
 Developed by amadvance under GPLv3. Active since early 2010s with ongoing updates. Cross-platform support for Linux, Windows, macOS, BSD, Solaris. Targeted at media centres with large static files. Standard solution in self-hosted community, used by content creators and small production studios as alternative to unRAID and traditional RAID.
 - Can be used alongside Mergerfs to provide some redundancy
 - Stores parity for recovery from up to six disk failures
@@ -130,7 +130,7 @@ NFS over Samba for file shares was a no-brainer as I am literally the only perso
 
 
 #### PCIe Passthrough
-Did I forget to mention the NAS was virtualised? While researching Proxmox I discovered you can pass through [PCIe devices](https://pve.proxmox.com/wiki/PCI(e)_Passthrough) into VMs so they appear as native devices.
+Did I forget to mention the NAS was virtualised? While researching Proxmox I discovered you can pass through [PCIe devices](https://pve.proxmox.com/wiki/PCI(e)_Passthrough) to VMs so they appear as native devices.
 The idea of leaving the NAS disk exposed on Proxmox and provisioning block storage from them to be virtualised on OMV felt gross and I wanted near-native performance from OMV.
 
 The code block below contains the setup process for systems using systemd-boot:
@@ -187,7 +187,7 @@ LSI HBA SAS Controller:
 ```
 
 
-## Progression of hardware
+## Hardware Progression
 The slippery slope that is purchasing parts you don't need because you look at eBay too much.
 
 "Just a little more" I said, "I don't need it" I said...

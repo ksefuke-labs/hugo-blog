@@ -5,7 +5,9 @@ layout = 'simple'
 +++
 
 ---
-## Kubernetes Homelab | Jan 2026 - Present Day
+## Kubernetes Homelab 
+`Jan 2026 - Present Day`
+
 [ksefuke-labs/kubernetes-homelab](https://github.com/ksefuke-labs/kubernetes-homelab)
 
 Designed and deployed a production-grade Kubernetes homelab environment using Talos Linux, K3s, and Proxmox — with the Talos Linux and K3s clusters managed through GitOps principles with FluxCD.
@@ -26,7 +28,9 @@ Actively expanding with planned additions including Cilium to replace Flannel an
 
 ---
 
-## Serverless Hugo Deployment | January 2026 - Febuary 2026
+## Serverless Hugo Deployment
+`January 2026 - Febuary 2026`
+
 [ksefuke-labs/hugo-blog](https://github.com/ksefuke-labs/hugo-blog) | [Hugo Site Deployment](https://www.ksefuke-labs.com/articles/hugo-site-deployment/)
 
 This very website built to showcase progress, thought processes and learning from years of Obsidian notes documenting ideas, interests and homelab shenanigans.
@@ -38,7 +42,9 @@ Developed locally on CachyOS using the official Hugo pacman package, with live p
 
 ---
 
-## OPNsense - Enterprise Grade Firewall Router | May 2023 - Present Day
+## OPNsense - Enterprise Grade Firewall Router
+`May 2023 - Present Day`
+
 [Enterprise Grade Firewall Router](https://www.ksefuke-labs.com/articles/enterprise-grade-firewall-router/)
 
 Frustrated by the limitations of consumer-grade routers — no VLAN support, no DNS control, random dropouts, and locked-down firmware — I decided to build a custom firewall router from scratch.
@@ -56,7 +62,9 @@ What I built and configured:
 ![opnsense.png](opnsense.png)
 
 ---
-## Proxmox - All in one Homelab | December 2022 - Present Day
+## Proxmox - All in one Homelab
+`December 2022 - Present Day`
+
 [State of the Homelab 2026](https://www.ksefuke-labs.com/articles/state-of-homelab-2026/)
 
 A self-hosted homelab built to eliminate reliance on cloud storage providers and music streaming services, with a focus on data ownership, power efficiency, and extensibility.
